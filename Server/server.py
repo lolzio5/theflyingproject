@@ -1,12 +1,11 @@
 import asyncio
 import websockets
 
+import updatePositions as p
 # Dictionary to store clients
 clients = {}
-# Set to store closed connections
-closed_connections = set()
 
-def send_data(data):
+def split_dict(data):
         data_keys = list(data.keys())
         data_values = list(data.values())
         data_keys_split = ','.join(data_keys)
@@ -22,11 +21,14 @@ def combine_dict(data):
 async def new_connection(websocket):
     if len(clients)==0:
         clients[websocket] = "Player 1"
-    elif len(clients)==1:
+    elif len(clients)==2:
         clients[websocket] = "Player 2"
     await broadcast(f"Welcome to the game, {clients[websocket]}")
 
 async def connected_client(websocket):
+    # Tracks the number of seconds between each packet sent
+    DeltaSeconds=0
+    CurrentDataDict={}
     try:
         await new_connection(websocket)
     except:
@@ -34,14 +36,33 @@ async def connected_client(websocket):
         del clients[websocket]
     while True:
         try:
-            data=await websocket.recv()
-            data_dict = combine_dict(data)
+            FPGA_Data=await websocket.recv()
         except:
             print(f"{clients[websocket]} unexpectedly disconnected.")
             del clients[websocket]
             break
-        processed_data = await location_processing(data_dict)
-        await broadcast(send_data(processed_data))
+        TargetDataDict = combine_dict(FPGA_Data)
+        CurrentDataDict = await processing(TargetDataDict, CurrentDataDict, DeltaSeconds)
+        await broadcast(split_dict(CurrentDataDict))
+
+async def processing(TargetData, CurrentData, DeltaSeconds):
+    # Given by the FPGA
+    TargetThrust=float(TargetData['Thrust'])
+    TargetPitch=float(TargetData['Pitch'])
+    TargetRoll=float(TargetData['Roll'])
+    TargetYaw=float(TargetData['Yaw'])
+    # Retained from the previous iteration
+    CurrentThrust=p.updateThrust(CurrentThrust, TargetThrust, DeltaSeconds)
+    CurrentPitch=p.updatePitch(CurrentPitch, TargetPitch, DeltaSeconds)
+    CurrentRoll=p.updatePitch(CurrentRoll, TargetRoll, DeltaSeconds)
+    CurrentYaw=p.updatePitch(CurrentYaw, TargetYaw, DeltaSeconds)
+    CurrentPosition=p.updatePosition(CurrentThrust, TargetThrust, DeltaSeconds)
+    CurrentData['Thrust']=str(CurrentThrust)
+    CurrentData['Pitch']=str(CurrentThrust)
+    CurrentData['Roll']=str(CurrentThrust)
+    CurrentData['Yaw']=str(CurrentThrust)
+    CurrentData['Position']=str(CurrentPosition)
+    return CurrentData
 
 async def broadcast(message):
     for websocket in clients:
@@ -51,12 +72,6 @@ async def broadcast(message):
             print(f"Could not broadcast to {clients[websocket]}. Please reconnect.")
             del clients[websocket]
             
-async def location_processing(data):
-    data['x'] = str(float(data['x']) * 50)
-    data['y'] = str(float(data['y']) * 50)
-    data['z'] = str(float(data['z']) * 50)
-    return data
-
 async def main():
     # Start the WebSocket server
     server = await websockets.serve(connected_client, "127.0.0.1", 12000)

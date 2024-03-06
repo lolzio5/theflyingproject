@@ -6,16 +6,21 @@ import unreal as un
 # CurrentThrust, CurrentPitch, CurrentRoll, CurrentYaw <- retained from previous tick
 # TargetThrust, TargetPitch, TargetRoll, TargetYaw <- Given by FPGA controller
 
-def updateThrust(CurrentThrust, TargetThrust, DeltaSeconds, ThrustMultiplier=2500, MaxThrustSpeed=10000):
-    CurrentThrust = TargetThrust * DeltaSeconds * ThrustMultiplier + CurrentThrust;
+def updateThrust(CurrentThrust, TargetThrust, DeltaSeconds):
+    ThrustMultiplier=2500
+    MaxThrustSpeed=10000
+
+    CurrentThrust = TargetThrust * DeltaSeconds * ThrustMultiplier + CurrentThrust
 
     if CurrentThrust > MaxThrustSpeed:
         CurrentThrust = MaxThrustSpeed
         
     return CurrentThrust
 
-def updatePitch(CurrentPitch, TargetPitch, DeltaSeconds, MaxFlapPitch=10, MaxElevatorPitch=25):
-    
+def updatePitch(CurrentPitch, TargetPitch, DeltaSeconds):
+    MaxFlapPitch=10
+    MaxElevatorPitch=25
+
     CurrentPitch = np.interp(CurrentPitch, TargetPitch, 10)
     
     JetPitch = CurrentPitch * DeltaSeconds
@@ -36,8 +41,9 @@ def updatePitch(CurrentPitch, TargetPitch, DeltaSeconds, MaxFlapPitch=10, MaxEle
     
     return {JetPitch, FlapPitch, ElevatorPitch}
 
-def updateRoll(CurrentRoll, TargetRoll, DeltaSeconds, MaxAileronYaw=45):
-    
+def updateRoll(CurrentRoll, TargetRoll, DeltaSeconds):
+    MaxAileronYaw=45
+
     CurrentRoll = np.interp(CurrentRoll, TargetRoll, 10)
     
     JetRoll = CurrentRoll * DeltaSeconds
@@ -51,8 +57,9 @@ def updateRoll(CurrentRoll, TargetRoll, DeltaSeconds, MaxAileronYaw=45):
     
     return {JetRoll, AileronYaw}
 
-def updateYaw(CurrentYaw, TargetYaw, DeltaSeconds, MaxRudderYaw=45):
-    
+def updateYaw(CurrentYaw, TargetYaw, DeltaSeconds):
+    MaxRudderYaw=45
+
     CurrentYaw = np.interp(CurrentYaw, TargetYaw, 10)
     
     JetYaw = CurrentYaw * DeltaSeconds
@@ -66,7 +73,10 @@ def updateYaw(CurrentYaw, TargetYaw, DeltaSeconds, MaxRudderYaw=45):
     
     return {JetYaw, RudderYaw}
 
-def updatePosition(CurrentThrust, TargetThrust, DeltaSeconds, Drag=0.25, Gravity=981.0, MinThrust=4000):
+def updatePosition(CurrentThrust, TargetThrust, DeltaSeconds):
+    Drag=0.25
+    Gravity=981.0
+    MinThrust=4000
     
     # Calculate CurrentThrust (Interpolate if slowdown, instant if speed up)
     if TargetThrust < CurrentThrust:

@@ -16,7 +16,7 @@ async def send_data(websocket,data):
 async def main():
     async with websockets.connect('ws://127.0.0.1:12000') as websocket:
         while True:
-            location_data = {'Name': player_name, 'x':'0.1', 'y':'0.2', 'z':'0.3'} # Data from accelerometer must be packaged into a dict
+            location_data = {'Name': player_name, 'Thrust':'0.1', 'Pitch':'0.2', 'Roll':'0.3', 'Yaw':'0.4', 'Position':'3,2,4'} # Data from accelerometer must be packaged into a dict
             await send_data(websocket,location_data)
             await asyncio.sleep(2)
             

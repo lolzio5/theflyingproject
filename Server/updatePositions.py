@@ -1,50 +1,27 @@
 import numpy as np
 import unreal as un
 
-# Run using Epic installed python: 
-# C:/Program Files/Epic Games/UE_4.27/Engine/Binaries/ThirdParty/Python3/Win64/python.exe
-
-# To install new packages, pip has wrong path, manual install:
-# cd C:/Program Files/Epic Games/UE_4.27/Engine/Binaries/ThirdParty/Python3/Win64 
-# ./python.exe -m pip install --target . <PACKAGENAME>
-
 # Variables to be retained:
 # DeltaSeconds <- time elapsed since last frame (since last packet of information sent)
 # CurrentThrust, CurrentPitch, CurrentRoll, CurrentYaw <- retained from previous tick
 # TargetThrust, TargetPitch, TargetRoll, TargetYaw <- Given by FPGA controller
 
-<<<<<<< Updated upstream:Server/updatePositions.py
 def updateThrust(CurrentThrust, TargetThrust, DeltaSeconds):
     ThrustMultiplier=2500
     MaxThrustSpeed=10000
 
     CurrentThrust = TargetThrust * DeltaSeconds * ThrustMultiplier + CurrentThrust
-=======
-def interpolate_to(current_value, target_value, delta_time, interpolation_speed):
-    interpolation_factor = 1.0 - np.exp(-interpolation_speed * delta_time)
-    interpolated_value = current_value + interpolation_factor * (target_value - current_value)
-    return interpolated_value
-
-def updateThrust(CurrentThrust, TargetThrust, DeltaSeconds, ThrustMultiplier=2500, MaxThrustSpeed=10000):
-    CurrentThrust = TargetThrust * DeltaSeconds * ThrustMultiplier + CurrentThrust;
->>>>>>> Stashed changes:JetCalculations/updatePositions.py
 
     if CurrentThrust > MaxThrustSpeed:
         CurrentThrust = MaxThrustSpeed
         
     return CurrentThrust
 
-<<<<<<< Updated upstream:Server/updatePositions.py
 def updatePitch(CurrentPitch, TargetPitch, DeltaSeconds):
     MaxFlapPitch=10
     MaxElevatorPitch=25
 
     CurrentPitch = np.interp(CurrentPitch, TargetPitch, 10)
-=======
-def updatePitch(CurrentPitch, TargetPitch, DeltaSeconds, MaxFlapPitch=10, MaxElevatorPitch=25):
-
-    CurrentPitch = interpolate_to(CurrentPitch, TargetPitch, DeltaSeconds, 10)
->>>>>>> Stashed changes:JetCalculations/updatePositions.py
     
     JetPitch = CurrentPitch * DeltaSeconds
     
@@ -62,18 +39,12 @@ def updatePitch(CurrentPitch, TargetPitch, DeltaSeconds, MaxFlapPitch=10, MaxEle
     else:
         ElevatorPitch=-MaxElevatorPitch
     
-    return [JetPitch, FlapPitch, ElevatorPitch]
+    return {JetPitch, FlapPitch, ElevatorPitch}
 
-<<<<<<< Updated upstream:Server/updatePositions.py
 def updateRoll(CurrentRoll, TargetRoll, DeltaSeconds):
     MaxAileronYaw=45
 
     CurrentRoll = np.interp(CurrentRoll, TargetRoll, 10)
-=======
-def updateRoll(CurrentRoll, TargetRoll, DeltaSeconds, MaxAileronYaw=45):
-    
-    CurrentRoll = interpolate_to(CurrentRoll, TargetRoll, DeltaSeconds, 10)
->>>>>>> Stashed changes:JetCalculations/updatePositions.py
     
     JetRoll = CurrentRoll * DeltaSeconds
     
@@ -84,18 +55,12 @@ def updateRoll(CurrentRoll, TargetRoll, DeltaSeconds, MaxAileronYaw=45):
     else:
         AileronYaw=-MaxAileronYaw
     
-    return [JetRoll, AileronYaw]
+    return {JetRoll, AileronYaw}
 
-<<<<<<< Updated upstream:Server/updatePositions.py
 def updateYaw(CurrentYaw, TargetYaw, DeltaSeconds):
     MaxRudderYaw=45
 
     CurrentYaw = np.interp(CurrentYaw, TargetYaw, 10)
-=======
-def updateYaw(CurrentYaw, TargetYaw, DeltaSeconds, MaxRudderYaw=45):
-    
-    CurrentYaw = interpolate_to(CurrentYaw, TargetYaw, DeltaSeconds, 10)
->>>>>>> Stashed changes:JetCalculations/updatePositions.py
     
     JetYaw = CurrentYaw * DeltaSeconds
     
@@ -106,21 +71,16 @@ def updateYaw(CurrentYaw, TargetYaw, DeltaSeconds, MaxRudderYaw=45):
     else:
         RudderYaw=-MaxRudderYaw
     
-    return [JetYaw, RudderYaw]
+    return {JetYaw, RudderYaw}
 
-<<<<<<< Updated upstream:Server/updatePositions.py
 def updatePosition(CurrentThrust, TargetThrust, DeltaSeconds):
     Drag=0.25
     Gravity=981.0
     MinThrust=4000
-=======
-# needs fixing, currently unreal package broken..
-def updatePosition(CurrentThrust, TargetThrust, DeltaSeconds, Drag=0.25, Gravity=981.0, MinThrust=4000):
->>>>>>> Stashed changes:JetCalculations/updatePositions.py
     
     # Calculate CurrentThrust (Interpolate if slowdown, instant if speed up)
     if TargetThrust < CurrentThrust:
-        CurrentThrust = interpolate_to(CurrentThrust, TargetThrust, DeltaSeconds, Drag)
+        CurrentThrust = np.interp(CurrentThrust, TargetThrust, Drag)
     else:
         CurrentThrust = TargetThrust
         

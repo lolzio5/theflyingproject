@@ -3,7 +3,7 @@ import unreal as un
 
 # Variables to be retained:
 # DeltaSeconds <- time elapsed since last frame (since last packet of information sent)
-# CurrentThrust, CurrentSpeed, CurrentPitch, CurrentRoll, CurrentYaw <- retained from previous tick
+# CurrentThrust, CurrentPitch, CurrentRoll, CurrentYaw <- retained from previous tick
 # TargetThrust, TargetPitch, TargetRoll, TargetYaw <- Given by FPGA controller
 
 def updateThrust(CurrentThrust, TargetThrust, DeltaSeconds, ThrustMultiplier=2500, MaxThrustSpeed=10000):
@@ -66,20 +66,20 @@ def updateYaw(CurrentYaw, TargetYaw, DeltaSeconds, MaxRudderYaw=45):
     
     return {JetYaw, RudderYaw}
 
-def updatePosition(CurrentSpeed, TargetThrust, DeltaSeconds, Drag=0.25, Gravity=981.0, MinThrust=4000):
+def updatePosition(CurrentThrust, TargetThrust, DeltaSeconds, Drag=0.25, Gravity=981.0, MinThrust=4000):
     
-    # Calculate CurrentSpeed (Interpolate if slowdown, instant if speed up)
-    if TargetThrust < CurrentSpeed:
-        CurrentSpeed = np.interp(CurrentSpeed, TargetThrust, Drag)
+    # Calculate CurrentThrust (Interpolate if slowdown, instant if speed up)
+    if TargetThrust < CurrentThrust:
+        CurrentThrust = np.interp(CurrentThrust, TargetThrust, Drag)
     else:
-        CurrentSpeed = TargetThrust
+        CurrentThrust = TargetThrust
         
     # Calculate NewPosition
     XPosition = un.get_actor_forward_vector()
-    NewPosition = XPosition * CurrentSpeed * DeltaSeconds
+    NewPosition = XPosition * CurrentThrust * DeltaSeconds
     
     # Calculate Applied Gravity
-    AppliedGravity = un.map_range_clamped(CurrentSpeed, 0.0, MinThrust, Gravity, 0.0)
+    AppliedGravity = un.map_range_clamped(CurrentThrust, 0.0, MinThrust, Gravity, 0.0)
     
     # Update Position
     NewPosition[2] = NewPosition[2] - (AppliedGravity * DeltaSeconds)

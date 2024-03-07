@@ -23,7 +23,9 @@ x_normalised = 0
 y_normalised = 0
 button_0 = 0
 button_1 = 0
-switch = 0
+BUTTON = 0
+switches = 0
+SWITCH = 0
 
 def signed_16(value):
     return -(value & 0x8000) | (value & 0x7fff)
@@ -39,6 +41,7 @@ while True:
         break
     if accelerometer_data:
         output = accelerometer_data.decode("utf-8").strip()
+        # print(output)
 
         ### Extract x_read, y_read, button_0, button_1, switch values from FPGA output
         if "x_read" in output:
@@ -48,12 +51,28 @@ while True:
         if "button_0" in output:
             button_0 = int(output.split("\t")[2].split(":")[1].strip())
         if "button_1" in output:
-            button_1 = -int(output.split("\t")[3].split(":")[1].strip())
+            button_1 = int(output.split("\t")[3].split(":")[1].strip())
         if "switch" in output:
-            switch = int(output.split("\t")[4].split(":")[1].strip(), 16)
+            switches = int(output.split("\t")[4].split(":")[1].strip(), 16)
         
-        # print("raw x_read: ", x_read, "  raw y_read: ", y_read, "  button_0: ", button_0, "  button_1: ", button_1, "  switch: ", switch)
+        # print("raw x_read: ", x_read, "  raw y_read: ", y_read, "  button_0: ", button_0, "  button_1: ", button_1, "  switches: ", switches)
         
+        if button_0 == 1 and button_1 == 0:
+            BUTTON = -1
+        elif button_0 == 0 and button_1 == 1:
+            BUTTON = 1
+        else:
+            BUTTON = 0
+            
+        if switches == 1:
+            SWITCH = 1
+        elif switches == 512:
+            SWITCH = -1
+        else:
+            SWITCH = 0
+            
+        print("raw x_read: ", x_read, "  raw y_read: ", y_read, "  BUTTON: ", BUTTON, "  SWITCH: ", SWITCH)
+
         ### Map x_read and y_read values to [-1, 1]
         x_normalised = map_to_range(x_read, -255, 255, 1, -1)
         y_normalised = map_to_range(y_read, -255, 255, -1, 1)

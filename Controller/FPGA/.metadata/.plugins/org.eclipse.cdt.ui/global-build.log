@@ -1,0 +1,297 @@
+17:39:15 **** Incremental Build of configuration Nios II for project led_accelerometer ****
+make all 
+Info: Building ../led_accelerometer_bsp/
+D:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../led_accelerometer_bsp/
+[BSP build complete]
+Info: Compiling led_acceleromter_2D.c to obj/default/led_acceleromter_2D.o
+nios2-elf-gcc -xc -MP -MMD -c -I../led_accelerometer_bsp//HAL/inc -I../led_accelerometer_bsp/ -I../led_accelerometer_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/led_acceleromter_2D.o led_acceleromter_2D.c
+led_acceleromter_2D.c: In function 'main':
+led_acceleromter_2D.c:95:9: warning: implicit declaration of function 'alt_printf' [-Wimplicit-function-declaration]
+         alt_printf("x_read:%x\t y_read: %x\t button_0: %x\t button_1: %x\t switch: %x\n", x_avg, y_avg, button, slide_switch);
+         ^
+Info: Linking led_accelerometer.elf
+nios2-elf-g++  -T'../led_accelerometer_bsp//linker.x' -msys-crt0='../led_accelerometer_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../led_accelerometer_bsp/  -msmallc  -Wl,-Map=led_accelerometer.map   -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o led_accelerometer.elf obj/default/led_acceleromter_2D.o -lm -msys-lib=m
+nios2-elf-insert led_accelerometer.elf --thread_model hal --cpu_name cpu --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios_accelerometer --quartus_project_dir "D:/Information_Processing_LABS/theflyingproject/Controller/FPGA" --sopcinfo D:/Information_Processing_LABS/theflyingproject/Controller/FPGA/software/led_accelerometer_bsp/../../nios_accelerometer.sopcinfo
+Info: (led_accelerometer.elf) 3896 Bytes program size (code + initialized data).
+Info:                         60 KBytes free for stack + heap.
+Info: Creating led_accelerometer.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source led_accelerometer.elf >led_accelerometer.objdump
+[led_accelerometer build complete]
+17:40:10 **** Incremental Build of configuration Nios II for project led_accelerometer ****
+make all 
+Info: Building ../led_accelerometer_bsp/
+D:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../led_accelerometer_bsp/
+[BSP build complete]
+Info: Compiling led_acceleromter_2D.c to obj/default/led_acceleromter_2D.o
+nios2-elf-gcc -xc -MP -MMD -c -I../led_accelerometer_bsp//HAL/inc -I../led_accelerometer_bsp/ -I../led_accelerometer_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/led_acceleromter_2D.o led_acceleromter_2D.c
+led_acceleromter_2D.c: In function 'main':
+led_acceleromter_2D.c:95:9: warning: implicit declaration of function 'alt_printf' [-Wimplicit-function-declaration]
+         alt_printf("x_read:%x\t y_read: %x\t button: %x\t switch: %x\n", x_avg, y_avg, button, slide_switch);
+         ^
+Info: Linking led_accelerometer.elf
+nios2-elf-g++  -T'../led_accelerometer_bsp//linker.x' -msys-crt0='../led_accelerometer_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../led_accelerometer_bsp/  -msmallc  -Wl,-Map=led_accelerometer.map   -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o led_accelerometer.elf obj/default/led_acceleromter_2D.o -lm -msys-lib=m
+nios2-elf-insert led_accelerometer.elf --thread_model hal --cpu_name cpu --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios_accelerometer --quartus_project_dir "D:/Information_Processing_LABS/theflyingproject/Controller/FPGA" --sopcinfo D:/Information_Processing_LABS/theflyingproject/Controller/FPGA/software/led_accelerometer_bsp/../../nios_accelerometer.sopcinfo
+Info: (led_accelerometer.elf) 3880 Bytes program size (code + initialized data).
+Info:                         60 KBytes free for stack + heap.
+Info: Creating led_accelerometer.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source led_accelerometer.elf >led_accelerometer.objdump
+[led_accelerometer build complete]
+17:40:13 **** Build of configuration Nios II for project led_accelerometer_bsp ****
+make all 
+[BSP build complete]
+17:43:52 **** Incremental Build of configuration Nios II for project led_accelerometer ****
+make all 
+Info: Building ../led_accelerometer_bsp/
+D:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../led_accelerometer_bsp/
+[BSP build complete]
+Info: Compiling led_acceleromter_2D.c to obj/default/led_acceleromter_2D.o
+nios2-elf-gcc -xc -MP -MMD -c -I../led_accelerometer_bsp//HAL/inc -I../led_accelerometer_bsp/ -I../led_accelerometer_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/led_acceleromter_2D.o led_acceleromter_2D.c
+led_acceleromter_2D.c: In function 'main':
+led_acceleromter_2D.c:96:9: warning: implicit declaration of function 'alt_printf' [-Wimplicit-function-declaration]
+         alt_printf("x_read:%x\t y_read: %x\t button_0: %x\t button_1: %x\t switch: %x\n", x_avg, y_avg, button_0, button_1, slide_switch);
+         ^
+Info: Linking led_accelerometer.elf
+nios2-elf-g++  -T'../led_accelerometer_bsp//linker.x' -msys-crt0='../led_accelerometer_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../led_accelerometer_bsp/  -msmallc  -Wl,-Map=led_accelerometer.map   -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o led_accelerometer.elf obj/default/led_acceleromter_2D.o -lm -msys-lib=m
+nios2-elf-insert led_accelerometer.elf --thread_model hal --cpu_name cpu --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios_accelerometer --quartus_project_dir "D:/Information_Processing_LABS/theflyingproject/Controller/FPGA" --sopcinfo D:/Information_Processing_LABS/theflyingproject/Controller/FPGA/software/led_accelerometer_bsp/../../nios_accelerometer.sopcinfo
+Info: (led_accelerometer.elf) 3916 Bytes program size (code + initialized data).
+Info:                         60 KBytes free for stack + heap.
+Info: Creating led_accelerometer.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source led_accelerometer.elf >led_accelerometer.objdump
+[led_accelerometer build complete]
+17:43:55 **** Incremental Build of configuration Nios II for project led_accelerometer_bsp ****
+make all 
+[BSP build complete]
+17:44:03 **** Incremental Build of configuration Nios II for project led_accelerometer ****
+make all 
+Info: Building ../led_accelerometer_bsp/
+D:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../led_accelerometer_bsp/
+[BSP build complete]
+[led_accelerometer build complete]
+17:44:05 **** Incremental Build of configuration Nios II for project led_accelerometer_bsp ****
+make all 
+[BSP build complete]
+17:46:28 **** Incremental Build of configuration Nios II for project led_accelerometer ****
+make all 
+Info: Building ../led_accelerometer_bsp/
+D:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../led_accelerometer_bsp/
+[BSP build complete]
+Info: Compiling led_acceleromter_2D.c to obj/default/led_acceleromter_2D.o
+nios2-elf-gcc -xc -MP -MMD -c -I../led_accelerometer_bsp//HAL/inc -I../led_accelerometer_bsp/ -I../led_accelerometer_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/led_acceleromter_2D.o led_acceleromter_2D.c
+led_acceleromter_2D.c: In function 'main':
+led_acceleromter_2D.c:95:9: warning: implicit declaration of function 'alt_printf' [-Wimplicit-function-declaration]
+         alt_printf("x_read:%x\t y_read: %x\t button: %x\t switch: %x\n", x_avg, y_avg, button, slide_switch);
+         ^
+Info: Linking led_accelerometer.elf
+nios2-elf-g++  -T'../led_accelerometer_bsp//linker.x' -msys-crt0='../led_accelerometer_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../led_accelerometer_bsp/  -msmallc  -Wl,-Map=led_accelerometer.map   -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o led_accelerometer.elf obj/default/led_acceleromter_2D.o -lm -msys-lib=m
+nios2-elf-insert led_accelerometer.elf --thread_model hal --cpu_name cpu --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios_accelerometer --quartus_project_dir "D:/Information_Processing_LABS/theflyingproject/Controller/FPGA" --sopcinfo D:/Information_Processing_LABS/theflyingproject/Controller/FPGA/software/led_accelerometer_bsp/../../nios_accelerometer.sopcinfo
+Info: (led_accelerometer.elf) 3880 Bytes program size (code + initialized data).
+Info:                         60 KBytes free for stack + heap.
+Info: Creating led_accelerometer.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source led_accelerometer.elf >led_accelerometer.objdump
+[led_accelerometer build complete]
+17:46:30 **** Incremental Build of configuration Nios II for project led_accelerometer_bsp ****
+make all 
+[BSP build complete]
+17:57:57 **** Incremental Build of configuration Nios II for project led_accelerometer ****
+make all 
+Info: Building ../led_accelerometer_bsp/
+D:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../led_accelerometer_bsp/
+[BSP build complete]
+Info: Compiling led_acceleromter_2D.c to obj/default/led_acceleromter_2D.o
+nios2-elf-gcc -xc -MP -MMD -c -I../led_accelerometer_bsp//HAL/inc -I../led_accelerometer_bsp/ -I../led_accelerometer_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/led_acceleromter_2D.o led_acceleromter_2D.c
+led_acceleromter_2D.c: In function 'main':
+led_acceleromter_2D.c:95:9: warning: implicit declaration of function 'alt_printf' [-Wimplicit-function-declaration]
+         alt_printf("x_read:%x\t y_read: %x\t buttons: %x\t switch: %x\n", x_avg, y_avg, button, slide_switch);
+         ^
+Info: Linking led_accelerometer.elf
+nios2-elf-g++  -T'../led_accelerometer_bsp//linker.x' -msys-crt0='../led_accelerometer_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../led_accelerometer_bsp/  -msmallc  -Wl,-Map=led_accelerometer.map   -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o led_accelerometer.elf obj/default/led_acceleromter_2D.o -lm -msys-lib=m
+nios2-elf-insert led_accelerometer.elf --thread_model hal --cpu_name cpu --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios_accelerometer --quartus_project_dir "D:/Information_Processing_LABS/theflyingproject/Controller/FPGA" --sopcinfo D:/Information_Processing_LABS/theflyingproject/Controller/FPGA/software/led_accelerometer_bsp/../../nios_accelerometer.sopcinfo
+Info: (led_accelerometer.elf) 3884 Bytes program size (code + initialized data).
+Info:                         60 KBytes free for stack + heap.
+Info: Creating led_accelerometer.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source led_accelerometer.elf >led_accelerometer.objdump
+[led_accelerometer build complete]
+17:58:00 **** Incremental Build of configuration Nios II for project led_accelerometer_bsp ****
+make all 
+[BSP build complete]
+18:00:46 **** Incremental Build of configuration Nios II for project led_accelerometer ****
+make all 
+Info: Building ../led_accelerometer_bsp/
+D:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../led_accelerometer_bsp/
+[BSP build complete]
+Info: Compiling led_acceleromter_2D.c to obj/default/led_acceleromter_2D.o
+nios2-elf-gcc -xc -MP -MMD -c -I../led_accelerometer_bsp//HAL/inc -I../led_accelerometer_bsp/ -I../led_accelerometer_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/led_acceleromter_2D.o led_acceleromter_2D.c
+led_acceleromter_2D.c: In function 'main':
+led_acceleromter_2D.c:95:9: warning: implicit declaration of function 'alt_printf' [-Wimplicit-function-declaration]
+         alt_printf("x_read:%x\t y_read: %x\t button: %x\t switch: %x\n", x_avg, y_avg, button, slide_switch);
+         ^
+Info: Linking led_accelerometer.elf
+nios2-elf-g++  -T'../led_accelerometer_bsp//linker.x' -msys-crt0='../led_accelerometer_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../led_accelerometer_bsp/  -msmallc  -Wl,-Map=led_accelerometer.map   -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o led_accelerometer.elf obj/default/led_acceleromter_2D.o -lm -msys-lib=m
+nios2-elf-insert led_accelerometer.elf --thread_model hal --cpu_name cpu --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios_accelerometer --quartus_project_dir "D:/Information_Processing_LABS/theflyingproject/Controller/FPGA" --sopcinfo D:/Information_Processing_LABS/theflyingproject/Controller/FPGA/software/led_accelerometer_bsp/../../nios_accelerometer.sopcinfo
+Info: (led_accelerometer.elf) 3884 Bytes program size (code + initialized data).
+Info:                         60 KBytes free for stack + heap.
+Info: Creating led_accelerometer.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source led_accelerometer.elf >led_accelerometer.objdump
+[led_accelerometer build complete]
+18:00:48 **** Incremental Build of configuration Nios II for project led_accelerometer_bsp ****
+make all 
+[BSP build complete]
+18:00:51 **** Incremental Build of configuration Nios II for project led_accelerometer ****
+make all 
+Info: Building ../led_accelerometer_bsp/
+D:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../led_accelerometer_bsp/
+[BSP build complete]
+[led_accelerometer build complete]
+18:00:53 **** Incremental Build of configuration Nios II for project led_accelerometer_bsp ****
+make all 
+[BSP build complete]
+18:06:11 **** Incremental Build of configuration Nios II for project led_accelerometer ****
+make all 
+Info: Building ../led_accelerometer_bsp/
+D:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../led_accelerometer_bsp/
+[BSP build complete]
+Info: Compiling led_acceleromter_2D.c to obj/default/led_acceleromter_2D.o
+nios2-elf-gcc -xc -MP -MMD -c -I../led_accelerometer_bsp//HAL/inc -I../led_accelerometer_bsp/ -I../led_accelerometer_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/led_acceleromter_2D.o led_acceleromter_2D.c
+led_acceleromter_2D.c: In function 'main':
+led_acceleromter_2D.c:95:9: warning: implicit declaration of function 'alt_printf' [-Wimplicit-function-declaration]
+         alt_printf("x_read:%x\t y_read: %x\t BUTTON: %x\t switch: %x\n", x_avg, y_avg, button, slide_switch);
+         ^
+Info: Linking led_accelerometer.elf
+nios2-elf-g++  -T'../led_accelerometer_bsp//linker.x' -msys-crt0='../led_accelerometer_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../led_accelerometer_bsp/  -msmallc  -Wl,-Map=led_accelerometer.map   -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o led_accelerometer.elf obj/default/led_acceleromter_2D.o -lm -msys-lib=m
+nios2-elf-insert led_accelerometer.elf --thread_model hal --cpu_name cpu --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios_accelerometer --quartus_project_dir "D:/Information_Processing_LABS/theflyingproject/Controller/FPGA" --sopcinfo D:/Information_Processing_LABS/theflyingproject/Controller/FPGA/software/led_accelerometer_bsp/../../nios_accelerometer.sopcinfo
+Info: (led_accelerometer.elf) 3884 Bytes program size (code + initialized data).
+Info:                         60 KBytes free for stack + heap.
+Info: Creating led_accelerometer.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source led_accelerometer.elf >led_accelerometer.objdump
+[led_accelerometer build complete]
+18:06:13 **** Incremental Build of configuration Nios II for project led_accelerometer_bsp ****
+make all 
+[BSP build complete]
+18:09:06 **** Incremental Build of configuration Nios II for project led_accelerometer ****
+make all 
+Info: Building ../led_accelerometer_bsp/
+D:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../led_accelerometer_bsp/
+[BSP build complete]
+Info: Compiling led_acceleromter_2D.c to obj/default/led_acceleromter_2D.o
+nios2-elf-gcc -xc -MP -MMD -c -I../led_accelerometer_bsp//HAL/inc -I../led_accelerometer_bsp/ -I../led_accelerometer_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/led_acceleromter_2D.o led_acceleromter_2D.c
+led_acceleromter_2D.c: In function 'main':
+led_acceleromter_2D.c:97:9: warning: implicit declaration of function 'alt_printf' [-Wimplicit-function-declaration]
+         alt_printf("x_read:%x\t y_read: %x\t button_0: %x\t button_1: %x\t switch: %x\n", x_avg, y_avg, button_0, button_1, slide_switch);
+         ^
+Info: Linking led_accelerometer.elf
+nios2-elf-g++  -T'../led_accelerometer_bsp//linker.x' -msys-crt0='../led_accelerometer_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../led_accelerometer_bsp/  -msmallc  -Wl,-Map=led_accelerometer.map   -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o led_accelerometer.elf obj/default/led_acceleromter_2D.o -lm -msys-lib=m
+nios2-elf-insert led_accelerometer.elf --thread_model hal --cpu_name cpu --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios_accelerometer --quartus_project_dir "D:/Information_Processing_LABS/theflyingproject/Controller/FPGA" --sopcinfo D:/Information_Processing_LABS/theflyingproject/Controller/FPGA/software/led_accelerometer_bsp/../../nios_accelerometer.sopcinfo
+Info: (led_accelerometer.elf) 3912 Bytes program size (code + initialized data).
+Info:                         60 KBytes free for stack + heap.
+Info: Creating led_accelerometer.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source led_accelerometer.elf >led_accelerometer.objdump
+[led_accelerometer build complete]
+18:09:09 **** Incremental Build of configuration Nios II for project led_accelerometer_bsp ****
+make all 
+[BSP build complete]
+18:13:04 **** Incremental Build of configuration Nios II for project led_accelerometer ****
+make all 
+Info: Building ../led_accelerometer_bsp/
+D:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../led_accelerometer_bsp/
+[BSP build complete]
+[led_accelerometer build complete]
+18:13:06 **** Incremental Build of configuration Nios II for project led_accelerometer_bsp ****
+make all 
+[BSP build complete]
+18:21:01 **** Incremental Build of configuration Nios II for project led_accelerometer ****
+make all 
+Info: Building ../led_accelerometer_bsp/
+D:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../led_accelerometer_bsp/
+[BSP build complete]
+Info: Compiling led_acceleromter_2D.c to obj/default/led_acceleromter_2D.o
+nios2-elf-gcc -xc -MP -MMD -c -I../led_accelerometer_bsp//HAL/inc -I../led_accelerometer_bsp/ -I../led_accelerometer_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/led_acceleromter_2D.o led_acceleromter_2D.c
+led_acceleromter_2D.c: In function 'main':
+led_acceleromter_2D.c:97:9: warning: implicit declaration of function 'alt_printf' [-Wimplicit-function-declaration]
+         alt_printf("x_read:%x\t y_read: %x\t button_0: %x\t button_1: %x\t switch: %x\n", x_avg, y_avg, button_0, button_1, slide_switch);
+         ^
+Info: Linking led_accelerometer.elf
+nios2-elf-g++  -T'../led_accelerometer_bsp//linker.x' -msys-crt0='../led_accelerometer_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../led_accelerometer_bsp/  -msmallc  -Wl,-Map=led_accelerometer.map   -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o led_accelerometer.elf obj/default/led_acceleromter_2D.o -lm -msys-lib=m
+nios2-elf-insert led_accelerometer.elf --thread_model hal --cpu_name cpu --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios_accelerometer --quartus_project_dir "D:/Information_Processing_LABS/theflyingproject/Controller/FPGA" --sopcinfo D:/Information_Processing_LABS/theflyingproject/Controller/FPGA/software/led_accelerometer_bsp/../../nios_accelerometer.sopcinfo
+Info: (led_accelerometer.elf) 3916 Bytes program size (code + initialized data).
+Info:                         60 KBytes free for stack + heap.
+Info: Creating led_accelerometer.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source led_accelerometer.elf >led_accelerometer.objdump
+[led_accelerometer build complete]
+18:21:04 **** Incremental Build of configuration Nios II for project led_accelerometer_bsp ****
+make all 
+[BSP build complete]
+18:22:55 **** Incremental Build of configuration Nios II for project led_accelerometer ****
+make all 
+Info: Building ../led_accelerometer_bsp/
+D:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../led_accelerometer_bsp/
+[BSP build complete]
+Info: Compiling led_acceleromter_2D.c to obj/default/led_acceleromter_2D.o
+nios2-elf-gcc -xc -MP -MMD -c -I../led_accelerometer_bsp//HAL/inc -I../led_accelerometer_bsp/ -I../led_accelerometer_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/led_acceleromter_2D.o led_acceleromter_2D.c
+led_acceleromter_2D.c: In function 'main':
+led_acceleromter_2D.c:97:9: warning: implicit declaration of function 'alt_printf' [-Wimplicit-function-declaration]
+         alt_printf("x_read:%x\t y_read: %x\t button_0: %x\t button_1: %x\t switch: %x\n", x_avg, y_avg, button_0, button_1, slide_switch);
+         ^
+Info: Linking led_accelerometer.elf
+nios2-elf-g++  -T'../led_accelerometer_bsp//linker.x' -msys-crt0='../led_accelerometer_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../led_accelerometer_bsp/  -msmallc  -Wl,-Map=led_accelerometer.map   -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o led_accelerometer.elf obj/default/led_acceleromter_2D.o -lm -msys-lib=m
+nios2-elf-insert led_accelerometer.elf --thread_model hal --cpu_name cpu --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios_accelerometer --quartus_project_dir "D:/Information_Processing_LABS/theflyingproject/Controller/FPGA" --sopcinfo D:/Information_Processing_LABS/theflyingproject/Controller/FPGA/software/led_accelerometer_bsp/../../nios_accelerometer.sopcinfo
+Info: (led_accelerometer.elf) 3912 Bytes program size (code + initialized data).
+Info:                         60 KBytes free for stack + heap.
+Info: Creating led_accelerometer.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source led_accelerometer.elf >led_accelerometer.objdump
+[led_accelerometer build complete]
+18:22:57 **** Incremental Build of configuration Nios II for project led_accelerometer_bsp ****
+make all 
+[BSP build complete]
+18:24:41 **** Incremental Build of configuration Nios II for project led_accelerometer ****
+make all 
+Info: Building ../led_accelerometer_bsp/
+D:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../led_accelerometer_bsp/
+[BSP build complete]
+Info: Compiling led_acceleromter_2D.c to obj/default/led_acceleromter_2D.o
+nios2-elf-gcc -xc -MP -MMD -c -I../led_accelerometer_bsp//HAL/inc -I../led_accelerometer_bsp/ -I../led_accelerometer_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/led_acceleromter_2D.o led_acceleromter_2D.c
+led_acceleromter_2D.c: In function 'main':
+led_acceleromter_2D.c:97:9: warning: implicit declaration of function 'alt_printf' [-Wimplicit-function-declaration]
+         alt_printf("x_read:%x\t y_read: %x\t button_0: %x\t button_1: %x\t slide_switch: %x\n", x_avg, y_avg, button_0, button_1, slide_switch);
+         ^
+Info: Linking led_accelerometer.elf
+nios2-elf-g++  -T'../led_accelerometer_bsp//linker.x' -msys-crt0='../led_accelerometer_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../led_accelerometer_bsp/  -msmallc  -Wl,-Map=led_accelerometer.map   -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o led_accelerometer.elf obj/default/led_acceleromter_2D.o -lm -msys-lib=m
+nios2-elf-insert led_accelerometer.elf --thread_model hal --cpu_name cpu --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios_accelerometer --quartus_project_dir "D:/Information_Processing_LABS/theflyingproject/Controller/FPGA" --sopcinfo D:/Information_Processing_LABS/theflyingproject/Controller/FPGA/software/led_accelerometer_bsp/../../nios_accelerometer.sopcinfo
+Info: (led_accelerometer.elf) 3920 Bytes program size (code + initialized data).
+Info:                         60 KBytes free for stack + heap.
+Info: Creating led_accelerometer.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source led_accelerometer.elf >led_accelerometer.objdump
+[led_accelerometer build complete]
+18:24:44 **** Incremental Build of configuration Nios II for project led_accelerometer_bsp ****
+make all 
+[BSP build complete]
+18:27:56 **** Incremental Build of configuration Nios II for project led_accelerometer ****
+make all 
+Info: Building ../led_accelerometer_bsp/
+D:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../led_accelerometer_bsp/
+[BSP build complete]
+Info: Compiling led_acceleromter_2D.c to obj/default/led_acceleromter_2D.o
+nios2-elf-gcc -xc -MP -MMD -c -I../led_accelerometer_bsp//HAL/inc -I../led_accelerometer_bsp/ -I../led_accelerometer_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/led_acceleromter_2D.o led_acceleromter_2D.c
+led_acceleromter_2D.c: In function 'main':
+led_acceleromter_2D.c:97:9: warning: implicit declaration of function 'alt_printf' [-Wimplicit-function-declaration]
+         alt_printf("x_read:%x\t y_read: %x\t button_0: %x\t button_1: %x\t switch: %x\n", x_avg, y_avg, button_0, button_1, slide_switch);
+         ^
+Info: Linking led_accelerometer.elf
+nios2-elf-g++  -T'../led_accelerometer_bsp//linker.x' -msys-crt0='../led_accelerometer_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../led_accelerometer_bsp/  -msmallc  -Wl,-Map=led_accelerometer.map   -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o led_accelerometer.elf obj/default/led_acceleromter_2D.o -lm -msys-lib=m
+nios2-elf-insert led_accelerometer.elf --thread_model hal --cpu_name cpu --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios_accelerometer --quartus_project_dir "D:/Information_Processing_LABS/theflyingproject/Controller/FPGA" --sopcinfo D:/Information_Processing_LABS/theflyingproject/Controller/FPGA/software/led_accelerometer_bsp/../../nios_accelerometer.sopcinfo
+Info: (led_accelerometer.elf) 3912 Bytes program size (code + initialized data).
+Info:                         60 KBytes free for stack + heap.
+Info: Creating led_accelerometer.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source led_accelerometer.elf >led_accelerometer.objdump
+[led_accelerometer build complete]
+18:27:59 **** Incremental Build of configuration Nios II for project led_accelerometer_bsp ****
+make all 
+[BSP build complete]
+18:35:20 **** Incremental Build of configuration Nios II for project led_accelerometer ****
+make all 
+Info: Building ../led_accelerometer_bsp/
+D:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../led_accelerometer_bsp/
+[BSP build complete]
+[led_accelerometer build complete]
+18:35:21 **** Incremental Build of configuration Nios II for project led_accelerometer_bsp ****
+make all 
+[BSP build complete]

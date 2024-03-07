@@ -28,7 +28,7 @@ def normalize_vector(vector):
     return normalized_vector
 
 def updateThrust(CurrentThrust, TargetThrust, DeltaSeconds, ThrustMultiplier=2500, MaxThrustSpeed=10000):
-    CurrentThrust = TargetThrust * DeltaSeconds * ThrustMultiplier + CurrentThrust;
+    CurrentThrust = TargetThrust * DeltaSeconds * ThrustMultiplier + CurrentThrust
 
     if CurrentThrust > MaxThrustSpeed:
         CurrentThrust = MaxThrustSpeed

@@ -4,6 +4,8 @@ import websockets
 import updatePositions as p
 # Dictionary to store clients
 clients = {}
+# How many times per second the game should update
+game_tick_rate=30 
 
 def split_dict(data):
         data_keys = list(data.keys())
@@ -42,8 +44,10 @@ async def connected_client(websocket):
             del clients[websocket]
             break
         TargetDataDict = combine_dict(FPGA_Data)
-        CurrentDataDict = await processing(TargetDataDict, CurrentDataDict, DeltaSeconds)
+        CurrentDataDict = await processing(TargetDataDict, CurrentDataDict, 1/game_tick_rate)
         await broadcast(split_dict(CurrentDataDict))
+        asyncio.sleep(1/game_tick_rate)
+        
 
 async def processing(TargetData, CurrentData, DeltaSeconds):
     # Given by the FPGA

@@ -2,9 +2,9 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Mar 7, 2024 12:04:30 AM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1709769870216</BspGeneratedUnixTimeStamp>
-        <BspGeneratedLocation>D:\Information_Processing_LABS\playground\lab3\software\led_accelerometer_bsp</BspGeneratedLocation>
+        <BspGeneratedTimeStamp>Mar 7, 2024 1:08:21 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1709816901387</BspGeneratedUnixTimeStamp>
+        <BspGeneratedLocation>D:\Information_Processing_LABS\theflyingproject\Controller\FPGA\software\led_accelerometer_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\nios_accelerometer.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>

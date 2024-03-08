@@ -80,7 +80,7 @@ async def main():
 
             #===== Send Data =====#
             location_data = {'Name': player_name, 'Thrust': str(SWITCH), 'Pitch': str(y_normalised), 'Roll': str(x_normalised), 'Yaw': str(BUTTON), 'Position':'3,2,4'} # Data from accelerometer must be packaged into a dict
-            await send_data(websocket,location_data)
-            await asyncio.sleep(1)
+            # await send_data(websocket,location_data)
+            # await asyncio.sleep(0.0001)
             
 asyncio.run(main())

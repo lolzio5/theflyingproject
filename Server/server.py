@@ -34,7 +34,7 @@ async def connected_client(websocket):
     try:
         await new_connection(websocket)
     except:
-        print(f"{clients[websocket]} unexpectedly disconnected.")
+        print(f"A client unexpectedly disconnected.")
         del clients[websocket]
     while True:
         try:

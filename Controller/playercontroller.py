@@ -5,7 +5,8 @@ import subprocess
 
 player_name="Player 1"
 
-cmd = "nios2-terminal"
+cmd="C:/intelFPGA_lite/18.1/nios2eds/Nios II Command Shell.bat nios2-terminal"
+
 process = subprocess.Popen(
     cmd, 
     stdout=subprocess.PIPE, 
@@ -47,37 +48,30 @@ async def main():
                 break
             if accelerometer_data:
                 output = accelerometer_data.decode("utf-8").strip()
-
-                if "x_read" in output:
+                print(output)
+                if (("x_read" in output) and ("y_read" in output) and ("button_0" in output) and ("button_1" in output) and ("switch" in output)):
                     x_read = signed_16(int(output.split("\t")[0].split(":")[1].strip(), 16))
-                if "y_read" in output: 
+                    x_normalised = map_to_range(x_read, -255, 255, 1, -1)
                     y_read = signed_16(int(output.split("\t")[1].split(":")[1].strip(), 16))
-                if "button_0" in output:
+                    y_normalised = map_to_range(y_read, -255, 255, -1, 1)
                     button_0 = int(output.split("\t")[2].split(":")[1].strip())
-                if "button_1" in output:
                     button_1 = int(output.split("\t")[3].split(":")[1].strip())
-                if "switch" in output:
                     switches = int(output.split("\t")[4].split(":")[1].strip(), 16)
-
-            x_normalised = map_to_range(x_read, -255, 255, 1, -1)
-            y_normalised = map_to_range(y_read, -255, 255, -1, 1)
-            
-            if button_0 == 1 and button_1 == 0:
-                BUTTON = -1
-            elif button_0 == 0 and button_1 == 1:
-                BUTTON = 1
-            else:
-                BUTTON = 0
+                    if button_0 == 1 and button_1 == 0:
+                        BUTTON = -1
+                    elif button_0 == 0 and button_1 == 1:
+                        BUTTON = 1
+                    else:
+                        BUTTON = 0
                 
-            if switches == 1:
-                SWITCH = 1
-            elif switches == 512:
-                SWITCH = -1
-            else:
-                SWITCH = 0
+                    if switches == 1:
+                        SWITCH = 1
+                    elif switches == 512:
+                        SWITCH = -1
+                    else:
+                        SWITCH = 0
 
-            location_data = {'Name': player_name, 'Thrust': SWITCH, 'Pitch': y_normalised, 'Roll': x_normalised, 'Yaw': BUTTON, 'Position':'3,2,4'} # Data from accelerometer must be packaged into a dict
-            await send_data(websocket,location_data)
-            await asyncio.sleep(2)
-            
+                    location_data = {'Name': player_name, 'Thrust': str(SWITCH), 'Pitch': str(y_normalised), 'Roll': str(x_normalised), 'Yaw': str(BUTTON), 'Position':'3,2,4'} # Data from accelerometer must be packaged into a dict
+                    await send_data(websocket,location_data)
+            await asyncio.sleep(1)
 asyncio.run(main())

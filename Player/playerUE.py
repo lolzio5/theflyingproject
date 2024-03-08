@@ -19,6 +19,6 @@ async def main():
                 print(data) # Name of player and processed data received from server
             elif(response[0]=='W'):
                 print(response) # Welcome Message
-            await asyncio.sleep(2)
+            await asyncio.sleep(0.5)
             
 asyncio.run(main())

@@ -49,7 +49,7 @@ def updatePitch(CurrentPitch, TargetPitch, DeltaSeconds):
     
     ElevatorPitch = np.interp(CurrentPitch, [-1, 1], [-MaxElevatorPitch, MaxElevatorPitch])
     
-    return [JetPitch, -FlapPitch, -ElevatorPitch]
+    return [JetPitch, -FlapPitch, -ElevatorPitch, CurrentPitch]
 
 def updateRoll(CurrentRoll, TargetRoll, DeltaSeconds):
     MaxAileronYaw=45
@@ -61,10 +61,10 @@ def updateRoll(CurrentRoll, TargetRoll, DeltaSeconds):
     AileronYaw = np.interp(CurrentRoll, [-1, 1], [-MaxAileronYaw, MaxAileronYaw])
     
     # JET, LEFT AILERON, RIGHT AILERON
-    return [JetRoll, -AileronYaw, AileronYaw]
+    return [JetRoll, -AileronYaw, AileronYaw, CurrentRoll]
 
 def updateYaw(CurrentYaw, TargetYaw, DeltaSeconds):
-    MaxRudderYaw=45
+    MaxRudderYaw=45\
 
     CurrentYaw = interpolate_to(CurrentYaw, TargetYaw, DeltaSeconds, 10)
     
@@ -72,7 +72,8 @@ def updateYaw(CurrentYaw, TargetYaw, DeltaSeconds):
     
     RudderYaw = np.interp(CurrentYaw, [-1, 1], [-MaxRudderYaw, MaxRudderYaw])
 
-    return [JetYaw, RudderYaw]
+    return [JetYaw, RudderYaw, CurrentYaw]
+
 
 def updatePosition(CurrentPosition, CurrentThrust, TargetThrust, DeltaSeconds):
     Drag=0.25

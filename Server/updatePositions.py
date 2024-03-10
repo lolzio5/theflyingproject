@@ -60,8 +60,8 @@ def updateRoll(CurrentRoll, TargetRoll, DeltaSeconds):
     
     AileronYaw = np.interp(CurrentRoll, [-1, 1], [-MaxAileronYaw, MaxAileronYaw])
     
-    # JET, RIGHT AILERON (Left Aileron is -RightAileron)
-    return [JetRoll, AileronYaw, CurrentRoll]
+    # JET, LEFT AILERON (Right Aileron is -LeftAileron)
+    return [JetRoll, -AileronYaw, CurrentRoll]
 
 def updateYaw(CurrentYaw, TargetYaw, DeltaSeconds):
     MaxRudderYaw=45\

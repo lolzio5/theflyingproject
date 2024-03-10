@@ -29,7 +29,7 @@ async def connected_client(websocket):
         print(f"The exception {e} occured when connecting")
         del clients[websocket]
     while True:
-        FPGA_Data=await websocket.recv()
+        FPGA_Data = await websocket.recv()
         TargetDataDict = json.loads(FPGA_Data)
         StoredDataDict, ClientDataDict = processing(TargetDataDict, StoredDataDict, DeltaSeconds)
         await broadcast(json.dumps(ClientDataDict))
@@ -48,7 +48,6 @@ def processing(TargetData, StoredData, DeltaSeconds):
     CurrentPitch=p.updatePitch(StoredData['Pitch'], TargetPitch, DeltaSeconds)
     CurrentRoll=p.updateRoll(StoredData['Roll'], TargetRoll, DeltaSeconds)
     CurrentYaw=p.updateYaw(StoredData['Yaw'], TargetYaw, DeltaSeconds)
-    float_position_vector=[]
     CurrentPosition=p.updatePosition(StoredData['Position'],StoredData['Thrust'], TargetThrust, DeltaSeconds)
     if(TargetThrust):
         CurrentThrust=p.updateThrust(StoredData['Thrust'], TargetThrust, DeltaSeconds)
@@ -71,20 +70,16 @@ def processing(TargetData, StoredData, DeltaSeconds):
     return StoredData, ClientData
 
 async def broadcast(message):
-    faulty_connections=[]
     for websocket in clients:
         try:
             await websocket.send(message)
         except:
-            print(f"Could not broadcast to {clients[websocket]}. Please reconnect.")
-            faulty_connections.append(websocket)
-    for websocket in faulty_connections:
-        del clients[websocket]
+            print(f"Could not broadcast to all clients. Please reconnect.")
             
 async def main():
     # Start the WebSocket server
     server = await websockets.serve(connected_client, "127.0.0.1", 12000)
-    server.ping_interval = None
+    server.ping_timeout = None
     while True:
         print(f"Number of connected clients: {len(clients)}")
         await asyncio.sleep(15)

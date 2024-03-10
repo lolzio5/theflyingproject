@@ -26,7 +26,7 @@ async def connected_client(websocket):
     try:
         await new_connection(websocket)
     except Exception as e:
-        print(f"The exception {e} occured when connecting")
+        print(f"The exception {e} occured when connecting {clients[websocket]}")
         del clients[websocket]
     while True:
         FPGA_Data = await websocket.recv()
@@ -45,28 +45,35 @@ def processing(TargetData, StoredData, DeltaSeconds):
     TargetYaw=TargetData['Yaw']
 
     # Calculate new values based on old values
-    CurrentPitch=p.updatePitch(StoredData['Pitch'], TargetPitch, DeltaSeconds)
-    CurrentRoll=p.updateRoll(StoredData['Roll'], TargetRoll, DeltaSeconds)
-    CurrentYaw=p.updateYaw(StoredData['Yaw'], TargetYaw, DeltaSeconds)
-    CurrentPosition=p.updatePosition(StoredData['Position'],StoredData['Thrust'], TargetThrust, DeltaSeconds)
+    Pitch=p.updatePitch(StoredData['Pitch'], TargetPitch, DeltaSeconds)
+    Roll=p.updateRoll(StoredData['Roll'], TargetRoll, DeltaSeconds)
+    Yaw=p.updateYaw(StoredData['Yaw'], TargetYaw, DeltaSeconds)
+    Position=p.updatePosition(StoredData['Position'],StoredData['Thrust'], TargetThrust, DeltaSeconds)
     if(TargetThrust):
-        CurrentThrust=p.updateThrust(StoredData['Thrust'], TargetThrust, DeltaSeconds)
+        Thrust=p.updateThrust(StoredData['Thrust'], TargetThrust, DeltaSeconds)
     else:
-        CurrentThrust=CurrentPosition[1]
+        Thrust=Position[1]
     
     # Output the values to the client
-    ClientData['Thrust']=CurrentThrust
-    ClientData['Pitch']=CurrentPitch[:-1]
-    ClientData['Roll']=CurrentRoll[:-1]
-    ClientData['Yaw']=CurrentYaw[:-1]
-    ClientData['Position']=CurrentPosition[0]
+    ClientData['Thrust']=Thrust
+    ClientData['JetPitch']=Pitch[0]
+    ClientData['FlapPitch']=Pitch[1]
+    ClientData['ElevatorPitch']=Pitch[2]
+    ClientData['JetRoll']=Roll[0]
+    ClientData['LeftAileronYaw']=Roll[1]
+    ClientData['RightAileronYaw']=Roll[2]
+    ClientData['JetYaw']=Yaw[0]
+    ClientData['RudderYaw']=Yaw[1]
+    ClientData['XPosition']=Position[0][0]
+    ClientData['YPosition']=Position[0][1]
+    ClientData['ZPosition']=Position[0][2]
 
     # Store the current values for the next iteration
-    StoredData['Thrust']=CurrentThrust
-    StoredData['Pitch']=CurrentPitch[-1]
-    StoredData['Roll']=CurrentRoll[-1]
-    StoredData['Yaw']=CurrentYaw[-1]
-    StoredData['Position']=CurrentPosition[0]
+    StoredData['Thrust']=Thrust
+    StoredData['Pitch']=Pitch[-1]
+    StoredData['Roll']=Roll[-1]
+    StoredData['Yaw']=Yaw[-1]
+    StoredData['Position']=Position[0]
     return StoredData, ClientData
 
 async def broadcast(message):
@@ -74,7 +81,8 @@ async def broadcast(message):
         try:
             await websocket.send(message)
         except:
-            print(f"Could not broadcast to all clients. Please reconnect.")
+            print(f"Could not broadcast to {clients[websocket]}. Please reconnect.")
+            del clients[websocket]
             
 async def main():
     # Start the WebSocket server

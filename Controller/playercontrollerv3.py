@@ -76,6 +76,7 @@ async def read_data():
         #===== Package Data =====#
         location_data = {'Name': player_name, 'Thrust': SWITCH, 'Pitch': y_normalised, 'Roll': x_normalised, 'Yaw': BUTTON} # Data from accelerometer must be packaged into a dict
         # print(location_data)
+        await asyncio.sleep(0.0000000000000000000000000001)
 
 async def send_data(websocket):
     global location_data

@@ -8,6 +8,7 @@ clients = {}
 # How many times per second the game should update
 game_tick_rate=30 
 
+# Assign a name to a new connection
 async def new_connection(websocket):
     if len(clients)==0:
         clients[websocket] = "Player 1"
@@ -20,14 +21,17 @@ async def new_connection(websocket):
     await broadcast(f"Welcome to the game, {clients[websocket]}")
 
 async def connected_client(websocket):
-    # Tracks the number of seconds between each packet sent
+    # Time between game updates
     DeltaSeconds=1/game_tick_rate
     StoredDataDict={'Thrust': 0, 'Pitch': 0, 'Roll': 0, 'Yaw': 0, 'Position':[3,2,4]}
+    # Assign a name to a new connection
     try:
         await new_connection(websocket)
     except Exception as e:
         print(f"The exception {e} occured when connecting {clients[websocket]}")
         del clients[websocket]
+    
+    # Receive data from the server, process it and broadcast to all clients
     while True:
         FPGA_Data = await websocket.recv()
         TargetDataDict = json.loads(FPGA_Data)
@@ -75,6 +79,7 @@ def processing(TargetData, StoredData, DeltaSeconds):
     StoredData['Position']=Position[0]
     return StoredData, ClientData
 
+# Broadcast to all connected clients
 async def broadcast(message):
     for websocket in clients:
         try:

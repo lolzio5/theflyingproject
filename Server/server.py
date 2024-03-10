@@ -6,7 +6,7 @@ import updatePositions as p
 # Dictionary to store clients
 clients = {}
 # How many times per second the game should update
-game_tick_rate=30 
+game_tick_rate=2 
 
 # Assign a name to a new connection
 async def new_connection(websocket):
@@ -33,10 +33,16 @@ async def connected_client(websocket):
     
     # Receive data from the server, process it and broadcast to all clients
     while True:
-        FPGA_Data = await websocket.recv()
-        TargetDataDict = json.loads(FPGA_Data)
-        StoredDataDict, ClientDataDict = processing(TargetDataDict, StoredDataDict, DeltaSeconds)
-        await broadcast(json.dumps(ClientDataDict))
+        try:
+            FPGA_Data = await websocket.recv()
+            TargetDataDict = json.loads(FPGA_Data)
+            StoredDataDict, ClientDataDict = processing(TargetDataDict, StoredDataDict, DeltaSeconds)
+            print(ClientDataDict)
+            await broadcast(json.dumps(ClientDataDict))
+        except:
+            print("A controller disconnected")
+            del clients[websocket]
+            break
         await asyncio.sleep(DeltaSeconds)
 
 def processing(TargetData, StoredData, DeltaSeconds):
@@ -94,7 +100,7 @@ async def main():
     server.ping_timeout = None
     while True:
         print(f"Number of connected clients: {len(clients)}")
-        await asyncio.sleep(15)
+        await asyncio.sleep(5)
 
 # Run the main function
 asyncio.run(main())

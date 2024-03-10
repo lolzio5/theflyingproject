@@ -36,9 +36,7 @@ async def main():
         output = None
         while True:
             accelerometer_data = process.stdout.readline()
-            if accelerometer_data == b'' and process.poll() is not None:
-                break
-            if accelerometer_data:
+            if (accelerometer_data!=b'') and (process.poll() is not None):
                 output = accelerometer_data.decode("utf-8").strip()
                 # print(output)
                 
@@ -68,9 +66,9 @@ async def main():
                 else:
                     SWITCH = 0
 
-            #===== Send Data =====#
-            location_data = {'Name': player_name, 'Thrust': SWITCH, 'Pitch': y_normalised, 'Roll': x_normalised, 'Yaw': BUTTON} # Data from accelerometer must be packaged into a dict
-            await websocket.send(json.dumps(location_data))
+                #===== Send Data =====#
+                location_data = {'Name': player_name, 'Thrust': SWITCH, 'Pitch': y_normalised, 'Roll': x_normalised, 'Yaw': BUTTON} # Data from accelerometer must be packaged into a dict
+                await websocket.send(json.dumps(location_data))
             await asyncio.sleep(1/game_tick_rate)
             
 asyncio.run(main())

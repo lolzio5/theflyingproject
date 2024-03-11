@@ -79,7 +79,7 @@ def processing(TargetData, StoredData, DeltaSeconds):
     StoredData['Pitch']=Pitch[-1]
     StoredData['Roll']=Roll[-1]
     StoredData['Yaw']=Yaw[-1]
-    StoredData['Position']=Position
+    StoredData['Position']=Position[0]
     return StoredData, ClientData
 
 # Broadcast to all connected clients

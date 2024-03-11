@@ -1,0 +1,6 @@
+00:01:12 **** Incremental Build of configuration Nios II for project led_accelerometer_bsp ****
+make all 
+[BSP build complete]
+
+00:01:14 Build Finished (took 1s.565ms)
+

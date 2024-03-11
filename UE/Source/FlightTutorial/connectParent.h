@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "FlightTutorialGameInstance.h"
 #include "connectParent.generated.h"
 
 
@@ -21,6 +20,6 @@ public:
 	FString WidgetServerURL = "ws://127.0.0.1:12000";
 	
 	UFUNCTION(BlueprintCallable)
-	void GetURL();
+	void GetURL(FString);
 
 };

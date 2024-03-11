@@ -61,3 +61,8 @@ void UFlightTutorialGameInstance::updateServerMessage(const FString& MessageStri
 	GEngine->AddOnScreenDebugMessage(-1, 0.05, FColor::Yellow, "get Message2: " + ServerMessage);
 }
 
+
+void UFlightTutorialGameInstance::setInstanceServerURL(FString URL)
+{
+	InstanceServerURL  = URL;
+}

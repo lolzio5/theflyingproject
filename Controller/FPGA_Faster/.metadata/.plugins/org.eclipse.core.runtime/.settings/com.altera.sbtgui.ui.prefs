@@ -1,0 +1,4 @@
+eclipse.preferences.version=1
+newSoftwareExampleWizardPage.defaultLocation=C\:\\Users\\themi\\Desktop\\Labs\\theflyingproject\\Controller\\FPGA_Faster\\software\\faster_accelerometer_player_2
+newSoftwareExampleWizardPage.sopcinfoFile=C\:\\Users\\themi\\Desktop\\Labs\\theflyingproject\\Controller\\FPGA_Faster\\nios_accelerometer.sopcinfo
+newSoftwareExampleWizardPage2.newBspLocation=C\:\\Users\\themi\\Desktop\\Labs\\theflyingproject\\Controller\\FPGA_Faster\\software\\faster_accelerometer_player_2_bsp

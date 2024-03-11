@@ -1,0 +1,111 @@
+#include "system.h"
+#include "altera_up_avalon_accelerometer_spi.h"
+#include "altera_avalon_timer_regs.h"
+#include "altera_avalon_timer.h"
+#include "altera_avalon_pio_regs.h"
+#include "sys/alt_irq.h"
+#include <stdlib.h>
+
+#define OFFSET -32
+#define PWM_PERIOD 16
+#define N 5
+
+alt_8 pwm = 0;
+alt_u8 led;
+int level;
+
+void led_write(alt_u8 led_pattern) {
+    IOWR(LED_BASE, 0, led_pattern);
+}
+
+void sys_timer_isr() {
+    IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_BASE, 0);
+
+    if (pwm < abs(level)) {
+
+        if (level < 0) {
+            led_write(led << 1);
+        } else {
+            led_write(led >> 1);
+        }
+
+    } else {
+        led_write(led);
+    }
+
+    if (pwm > PWM_PERIOD) {
+        pwm = 0;
+    } else {
+        pwm++;
+    }
+
+}
+
+void timer_init(void * isr) {
+
+    IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_BASE, 0x0003);
+    IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_BASE, 0);
+    IOWR_ALTERA_AVALON_TIMER_PERIODL(TIMER_BASE, 0x0900);
+    IOWR_ALTERA_AVALON_TIMER_PERIODH(TIMER_BASE, 0x0000);
+    alt_irq_register(TIMER_IRQ, 0, isr);
+    IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_BASE, 0x0007);
+
+}
+
+void wait() {
+    unsigned long long cycles = 20 * 5000;
+    for (unsigned long long i = 0; i < cycles; i++) {
+        asm volatile ("nop");
+    }
+}
+
+int main() {
+
+    alt_32 x_read, y_read;
+    alt_u8 button_0, button_1;
+    alt_32 slide_switch;
+    alt_up_accelerometer_spi_dev * acc_dev;
+    acc_dev = alt_up_accelerometer_spi_open_dev("/dev/accelerometer_spi");
+    if (acc_dev == NULL) { // if return 1, check if the spi ip name is "accelerometer_spi"
+        return 1;
+    }
+
+    alt_32 x_buf[N] = {0}; // an array initialized with N elements, each initialized to 0
+    alt_32 y_buf[N] = {0}; // an array initialized with N elements, each initialized to 0
+    int x_idx = 0;
+    int y_idx = 0;
+
+    timer_init(sys_timer_isr);
+    while (1) {
+
+        alt_up_accelerometer_spi_read_x_axis(acc_dev, & x_read);
+        alt_up_accelerometer_spi_read_y_axis(acc_dev, & y_read);
+
+        button_0 = ~IORD_ALTERA_AVALON_PIO_DATA(BUTTON_BASE) & 0x01;
+        button_1 = (~IORD_ALTERA_AVALON_PIO_DATA(BUTTON_BASE) >> 1) & 0x01;
+
+        slide_switch = IORD_ALTERA_AVALON_PIO_DATA(SWITCH_BASE);
+
+        x_buf[x_idx] = x_read;
+        y_buf[y_idx] = y_read;
+        x_idx = (x_idx + 1) % N;
+        y_idx = (y_idx + 1) % N;
+
+        alt_32 x_sum = 0;
+        alt_32 y_sum = 0;
+        for (int i = 0; i < N; i++) {
+            x_sum += x_buf[i];
+            y_sum += y_buf[i];
+        }
+        alt_32 x_avg = x_sum / N;
+        alt_32 y_avg = y_sum / N;
+
+        // alt_printf("x_read:%x\t y_read: %x\t button_0: %x\t button_1: %x\t switch: %x\n", x_read, y_read, button_0, button_1, slide_switch);
+        alt_printf("x_read:%x\t y_read: %x\t button_0: %x\t button_1: %x\t switch: %x\n", x_avg, y_avg, button_0, button_1, slide_switch);
+
+        wait();
+    }
+
+    return 0;
+}
+

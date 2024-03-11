@@ -6,18 +6,18 @@ import updatePositions as p
 # Dictionary to store clients
 clients = {}
 # How many times per second the game should update
-game_tick_rate=2 
+game_tick_rate=15
 
 # Assign a name to a new connection
 async def new_connection(websocket):
     if len(clients)==0:
         clients[websocket] = "Player 1"
     elif len(clients)==1:
-        clients[websocket] = "Player 1's Controller"
+        clients[websocket] = "Player 1"
     elif len(clients)==2:
         clients[websocket] = "Player 2"
     elif len(clients)==3:
-        clients[websocket] = "Player 2's Controller"
+        clients[websocket] = "Player 2"
     await broadcast(f"Welcome to the game, {clients[websocket]}")
 
 async def connected_client(websocket):
@@ -37,10 +37,10 @@ async def connected_client(websocket):
             FPGA_Data = await websocket.recv()
             TargetDataDict = json.loads(FPGA_Data)
             StoredDataDict, ClientDataDict = processing(TargetDataDict, StoredDataDict, DeltaSeconds)
-            print(ClientDataDict)
+            ClientDataDict["Name"]=clients[websocket]
             await broadcast(json.dumps(ClientDataDict))
         except:
-            print("A controller disconnected")
+            print(f"{clients[websocket]} disconnected")
             del clients[websocket]
             break
         await asyncio.sleep(DeltaSeconds)
@@ -87,17 +87,19 @@ def processing(TargetData, StoredData, DeltaSeconds):
 
 # Broadcast to all connected clients
 async def broadcast(message):
-    for websocket in clients:
-        try:
-            await websocket.send(message)
-        except:
-            print(f"Could not broadcast to {clients[websocket]}. Please reconnect.")
-            del clients[websocket]
+    try:
+        for websocket in clients:
+            if clients[websocket]=="Player 1":
+                await websocket.send(message)
+            elif clients[websocket]=="Player 2":
+                await websocket.send(message)
+    except:
+        print(f"Could not broadcast to {clients[websocket]}. Please reconnect.")
+        del clients[websocket]
             
 async def main():
     # Start the WebSocket server
-    server = await websockets.serve(connected_client, "127.0.0.1", 12000)
-    server.ping_timeout = None
+    server = await websockets.serve(connected_client, "127.0.0.1", 12000, ping_timeout=99999)
     while True:
         print(f"Number of connected clients: {len(clients)}")
         await asyncio.sleep(5)

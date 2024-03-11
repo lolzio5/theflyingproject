@@ -4,8 +4,8 @@
 #include "connectParent.h"
 #include "FlightTutorialGameInstance.h"
 
-void connectParent::GetURL() {
+void connectParent::GetURL(FString URL) {
 	
 	UFlightTutorialGameInstance* GameInstance = Cast<UFlightTutorialGameInstance>(GetGameInstance());
-	
+	GameInstance->setInstanceServerURL(URL);
 }

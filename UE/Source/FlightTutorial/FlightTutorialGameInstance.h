@@ -23,12 +23,12 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "WebSocket") // Expose ServerURL to Blueprints
 	FString InstanceServerURL;
 
+	void setInstanceServerURL();
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "WebSocket")
 	FString ServerMessage;
 
 	void updateServerMessage(const FString& MessageString);
 
-	UFUNCTION(BlueprintPure, Category = "WebSocket")
-	FString GetServerURL() const { return InstanceServerURL; }
 
 };

@@ -1,11 +1,12 @@
 import subprocess
-from pynput.keyboard    import Controller   as KeyboardController
-from pynput.keyboard    import Key
-from pynput.mouse       import Controller   as MouseController
-from pynput.mouse       import Button
+import time
+#from pynput.keyboard    import Controller   as KeyboardController
+#from pynput.keyboard    import Key
+#from pynput.mouse       import Controller   as MouseController
+#from pynput.mouse       import Button
 
 ### Command to start the Nios II Terminal
-cmd = "nios2-terminal"
+cmd = "C:/intelFPGA_lite/18.1/nios2eds/Nios II Command Shell.bat nios2-terminal"
 
 ### Start the Nios II Terminal as a subprocess using python library subprocess
 process = subprocess.Popen(
@@ -14,8 +15,8 @@ process = subprocess.Popen(
     stderr=subprocess.PIPE
 )
 
-keyboard = KeyboardController()
-mouse = MouseController()
+#keyboard = KeyboardController()
+#mouse = MouseController()
 
 x_read = 0
 y_read = 0
@@ -35,7 +36,8 @@ def map_to_range(num, inMin, inMax, outMin, outMax):
 
 ### Read output from FPGA
 output = None
-while True:
+start=time.time()
+for i in range(100):
     accelerometer_data = process.stdout.readline()
     if accelerometer_data == b'' and process.poll() is not None:
         break
@@ -71,13 +73,14 @@ while True:
         else:
             SWITCH = 0
             
-        print("raw x_read: ", x_read, "  raw y_read: ", y_read, "  BUTTON: ", BUTTON, "  SWITCH: ", SWITCH)
+        #print("raw x_read: ", x_read, "  raw y_read: ", y_read, "  BUTTON: ", BUTTON, "  SWITCH: ", SWITCH)
 
         ### Map x_read and y_read values to [-1, 1]
         x_normalised = map_to_range(x_read, -255, 255, 1, -1)
         y_normalised = map_to_range(y_read, -255, 255, -1, 1)
         # print("dec x_read: ", x_normalised, "  dec y_read: ", y_normalised)
-
+end=time.time()
+print(f"time per measurement is {(end-start)/100}")
         ### Simulate mouse movement (for roll and pitch)
         # mouse.position = (x_normalised, y_normalised)
         # print('Now we have moved it to {0}'.format(mouse.position))

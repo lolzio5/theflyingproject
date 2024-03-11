@@ -23,10 +23,13 @@ async def new_connection(websocket):
 async def connected_client(websocket):
     # Time between game updates
     DeltaSeconds=1/game_tick_rate
-    StoredDataDict={'Thrust': 4000, 'Pitch': 0, 'Roll': 0, 'Yaw': 0, 'Position':[2643.669434,32.385994,726.266418]}
     # Assign a name to a new connection
     try:
         await new_connection(websocket)
+        if clients[websocket]=="Player 1":
+            StoredDataDict={'Thrust': 4000, 'Pitch': 0, 'Roll': 0, 'Yaw': 0, 'Position':[2643.669434,32.385994,726.266418]}
+        elif clients[websocket]=="Player 2":
+            StoredDataDict={'Thrust': 4000, 'Pitch': 0, 'Roll': 0, 'Yaw': 0, 'Position':[2643.669434,0.385994,726.266418]}
     except Exception as e:
         print(f"The exception {e} occured when connecting {clients[websocket]}")
         del clients[websocket]
@@ -70,16 +73,13 @@ def processing(TargetData, StoredData, DeltaSeconds):
     ClientData['RightAileronYaw']=Roll[1]
     ClientData['JetYaw']=Yaw[0]
     ClientData['RudderYaw']=Yaw[1]
-    ClientData['XPosition']=Position[0][0]
-    ClientData['YPosition']=Position[0][1]
-    ClientData['ZPosition']=Position[0][2]
 
     # Store the current values for the next iteration
     StoredData['Thrust']=Thrust
     StoredData['Pitch']=Pitch[-1]
     StoredData['Roll']=Roll[-1]
     StoredData['Yaw']=Yaw[-1]
-    StoredData['Position']=Position[0]
+    StoredData['Position']=Position
     return StoredData, ClientData
 
 # Broadcast to all connected clients

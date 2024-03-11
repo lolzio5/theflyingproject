@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;faster_accelerometer_player_2/hello_world_small.c&apos; to &apos;faster_accelerometer_player_1&apos;" description="Rename resource &apos;hello_world_small.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="hello_world_small.c" name="faster_accelerometer_player_1" stamp="1710180664691" updateReferences="true"/>
+</session>

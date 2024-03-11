@@ -26,10 +26,10 @@ async def connected_client(websocket):
     # Assign a name to a new connection
     try:
         await new_connection(websocket)
-        if clients[websocket]=="Player 1":
+        if clients[websocket]=="Player 2":
+            StoredDataDict={'Thrust': 4000, 'Pitch': 0, 'Roll': 0, 'Yaw': 0, 'Position':[3593.2771,2131.5019,965]}
+        elif clients[websocket]=="Player 1":
             StoredDataDict={'Thrust': 4000, 'Pitch': 0, 'Roll': 0, 'Yaw': 0, 'Position':[2643.669434,32.385994,726.266418]}
-        elif clients[websocket]=="Player 2":
-            StoredDataDict={'Thrust': 4000, 'Pitch': 0, 'Roll': 0, 'Yaw': 0, 'Position':[2643.669434,0.385994,726.266418]}
     except Exception as e:
         print(f"The exception {e} occured when connecting {clients[websocket]}")
         del clients[websocket]
@@ -96,7 +96,7 @@ async def broadcast(message):
             
 async def main():
     # Start the WebSocket server
-    server = await websockets.serve(connected_client, "127.0.0.1", 12000, ping_timeout=99999)
+    await websockets.serve(connected_client, "0.0.0.0", 12000, ping_timeout=999999)
     while True:
         print(f"Number of connected clients: {len(clients)}")
         await asyncio.sleep(5)

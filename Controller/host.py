@@ -36,8 +36,7 @@ def map_to_range(num, inMin, inMax, outMin, outMax):
 
 ### Read output from FPGA
 output = None
-start=time.time()
-for i in range(100):
+while True:
     accelerometer_data = process.stdout.readline()
     if accelerometer_data == b'' and process.poll() is not None:
         break
@@ -57,7 +56,7 @@ for i in range(100):
         if "switch" in output:
             switches = int(output.split("\t")[4].split(":")[1].strip(), 16)
         
-        # print("raw x_read: ", x_read, "  raw y_read: ", y_read, "  button_0: ", button_0, "  button_1: ", button_1, "  switches: ", switches)
+        print("raw x_read: ", x_read, "  raw y_read: ", y_read, "  button_0: ", button_0, "  button_1: ", button_1, "  switches: ", switches)
         
         if button_0 == 1 and button_1 == 0:
             BUTTON = -1
@@ -79,8 +78,7 @@ for i in range(100):
         x_normalised = map_to_range(x_read, -255, 255, 1, -1)
         y_normalised = map_to_range(y_read, -255, 255, -1, 1)
         # print("dec x_read: ", x_normalised, "  dec y_read: ", y_normalised)
-end=time.time()
-print(f"time per measurement is {(end-start)/100}")
+
         ### Simulate mouse movement (for roll and pitch)
         # mouse.position = (x_normalised, y_normalised)
         # print('Now we have moved it to {0}'.format(mouse.position))

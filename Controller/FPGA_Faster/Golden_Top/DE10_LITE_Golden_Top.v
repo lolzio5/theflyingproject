@@ -79,7 +79,11 @@ nios_accelerometer u0 (
 		.accelerometer_spi_external_interface_G_SENSOR_CS_N (GSENSOR_CS_N),  // .G_SENSOR_CS_N
 		.accelerometer_spi_external_interface_G_SENSOR_INT  (GSENSOR_INT[1]), // .G_SENSOR_INT
 		.hex3_external_connection_export                    (HEX3),                    //             hex3_external_connection.export
-		.hex1_external_connection_export                    (HEX1) 
+		.hex1_external_connection_export                    (HEX1),
+		.hex2_external_connection_export                    (HEX2),                    //             hex2_external_connection.export
+		.hex0_external_connection_export                    (HEX0),                    //             hex0_external_connection.export
+		.hex4_external_connection_export                    (HEX4),                    //             hex4_external_connection.export
+		.hex5_external_connection_export                    (HEX5)  
 	);
 
 

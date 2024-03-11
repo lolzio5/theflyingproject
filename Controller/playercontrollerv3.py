@@ -4,7 +4,7 @@ import json
 import subprocess
 
 player_name="Player 1"
-game_tick_rate=30 # How many times per second the game should update
+game_tick_rate=60 # How many times per second the game should update
 
 cmd="C:/intelFPGA_lite/18.1/nios2eds/Nios II Command Shell.bat nios2-terminal"
 #cmd="nios2-terminal"

@@ -8,7 +8,7 @@
 #include "FlightTutorialGameInstance.generated.h"
 
 /**
- * 
+ *
  */
 UCLASS()
 class FLIGHTTUTORIAL_API UFlightTutorialGameInstance : public UGameInstance
@@ -20,12 +20,15 @@ public:
 	virtual void Shutdown() override;
 	TSharedPtr<IWebSocket> WebSocket;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "WebSocket") // Expose ServerURL to Blueprints
+	FString InstanceServerURL;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "WebSocket")
 	FString ServerMessage;
 
 	void updateServerMessage(const FString& MessageString);
 
-private:
+	UFUNCTION(BlueprintPure, Category = "WebSocket")
+	FString GetServerURL() const { return InstanceServerURL; }
 
-	FString GetServerURL() const;
 };

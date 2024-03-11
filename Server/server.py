@@ -23,7 +23,7 @@ async def new_connection(websocket):
 async def connected_client(websocket):
     # Time between game updates
     DeltaSeconds=1/game_tick_rate
-    StoredDataDict={'Thrust': 0, 'Pitch': 0, 'Roll': 0, 'Yaw': 0, 'Position':[3,2,4]}
+    StoredDataDict={'Thrust': 4000, 'Pitch': 0, 'Roll': 0, 'Yaw': 0, 'Position':[2643.669434,32.385994,726.266418]}
     # Assign a name to a new connection
     try:
         await new_connection(websocket)
@@ -59,11 +59,8 @@ def processing(TargetData, StoredData, DeltaSeconds):
     Roll=p.updateRoll(StoredData['Roll'], TargetRoll, DeltaSeconds)
     Yaw=p.updateYaw(StoredData['Yaw'], TargetYaw, DeltaSeconds)
     Position=p.updatePosition(StoredData['Position'],StoredData['Thrust'], TargetThrust, DeltaSeconds)
-    if(TargetThrust):
-        Thrust=p.updateThrust(StoredData['Thrust'], TargetThrust, DeltaSeconds)
-    else:
-        Thrust=Position[1]
-    
+    Thrust=p.updateThrust(StoredData['Thrust'], TargetThrust, DeltaSeconds)
+
     # Output the values to the client
     ClientData['Thrust']=Thrust
     ClientData['JetPitch']=Pitch[0]

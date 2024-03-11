@@ -29,12 +29,16 @@ def normalize_vector(vector):
 
 def updateThrust(CurrentThrust, TargetThrust, DeltaSeconds):
     ThrustMultiplier=2500
+    MinThrustSpeed=0
     MaxThrustSpeed=10000
     CurrentThrust = TargetThrust * DeltaSeconds * ThrustMultiplier + CurrentThrust
 
     if CurrentThrust > MaxThrustSpeed:
         CurrentThrust = MaxThrustSpeed
-        
+    
+    if CurrentThrust < MinThrustSpeed:
+        CurrentThrust = MinThrustSpeed
+    
     return CurrentThrust
 
 def updatePitch(CurrentPitch, TargetPitch, DeltaSeconds):
@@ -82,6 +86,7 @@ def updatePosition(CurrentPosition, CurrentThrust, TargetThrust, DeltaSeconds):
 
     # Get direction vectors by normalizing CurrentPosition
     CurrentForwardPosition = normalize_vector(CurrentPosition)
+    
     # Smooth deceleration
     if TargetThrust < CurrentThrust:
         CurrentThrust = interpolate_to(CurrentThrust, TargetThrust, DeltaSeconds, Drag)
@@ -89,12 +94,29 @@ def updatePosition(CurrentPosition, CurrentThrust, TargetThrust, DeltaSeconds):
         CurrentThrust = TargetThrust
     
     # Calculate New Position
-    NewPosition = [i * CurrentThrust * DeltaSeconds for i in CurrentForwardPosition]
+    # NewPosition = [i * CurrentThrust * DeltaSeconds for i in CurrentForwardPosition]
     
+    NewPosition = [0,0,0]
+    for i in range(3):
+        NewPosition[i] = CurrentForwardPosition[i] * CurrentThrust * DeltaSeconds + CurrentPosition[i];
+        
     # Calculate Applied Gravity
-    AppliedGravity = np.interp(CurrentThrust, [0, MinThrust], [-Gravity, 0])
+    AppliedGravity = np.interp(CurrentThrust, [0, MinThrust], [-Gravity, 100])
     
     # Update Position
-    NewPosition[2] -= AppliedGravity * DeltaSeconds
+    NewPosition[2] += AppliedGravity * DeltaSeconds
 
     return [NewPosition, CurrentThrust]
+
+
+
+# startPos = [2643.669434, 32.385994, 726.266418]
+# i = 0
+# while i < 50:
+    
+#     startPos = updatePosition(startPos, 4000, 6000, 1/30)[0]
+#     print(startPos)
+    
+#     i+=1
+
+# print(normalize_vector([2643.669434, 32.385994, 726.266418]))

@@ -9,7 +9,7 @@
 // Sets default values
 AJetParent::AJetParent()
 {
- 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 }
@@ -93,7 +93,7 @@ float AJetParent::getYPositionIn()
 {
 	return y_position_in;
 }
-float AJetParent::getZPositionIn() 
+float AJetParent::getZPositionIn()
 {
 	return z_position_in;
 }
@@ -113,7 +113,7 @@ void AJetParent::setRollIn(float data)
 
 void AJetParent::setThrustIn(float data)
 {
-	 thrust_in = data;
+	thrust_in = data;
 }
 void AJetParent::setFlapPitchIn(float data)
 {
@@ -133,7 +133,7 @@ void AJetParent::setRightAileronYawIn(float data)
 }
 void AJetParent::setRudderYawIn(float data)
 {
-	rudder_yaw_in  = data;
+	rudder_yaw_in = data;
 }
 void AJetParent::setXPositionIn(float data)
 {
@@ -149,7 +149,7 @@ void AJetParent::setZPositionIn(float data)
 }
 
 void AJetParent::updatePosture(UFlightTutorialGameInstance* TheGameInstance)
-{	
+{
 	TheGameInstance = Cast<UFlightTutorialGameInstance>(GetGameInstance());
 	float current_yaw = getYawIn();
 	float current_pitch = getPitchIn();
@@ -164,8 +164,8 @@ void AJetParent::updatePosture(UFlightTutorialGameInstance* TheGameInstance)
 	float current_y_position = getYPositionIn();
 	float current_z_position = getZPositionIn();
 
-	GEngine->AddOnScreenDebugMessage(-1, 0.005, FColor::Green,"yaw: "+ FString::SanitizeFloat(current_yaw));
-	GEngine->AddOnScreenDebugMessage(-1, 0.005, FColor::Green,"pitch: " + FString::SanitizeFloat(current_pitch));
+	GEngine->AddOnScreenDebugMessage(-1, 0.005, FColor::Green, "yaw: " + FString::SanitizeFloat(current_yaw));
+	GEngine->AddOnScreenDebugMessage(-1, 0.005, FColor::Green, "pitch: " + FString::SanitizeFloat(current_pitch));
 	GEngine->AddOnScreenDebugMessage(-1, 0.005, FColor::Green, "roll: " + FString::SanitizeFloat(current_roll));
 	GEngine->AddOnScreenDebugMessage(-1, 0.005, FColor::Green, "thrust: " + FString::SanitizeFloat(current_thrust));
 	GEngine->AddOnScreenDebugMessage(-1, 0.005, FColor::Green, "flap_pitch: " + FString::SanitizeFloat(current_flap_pitch));
@@ -194,33 +194,33 @@ void AJetParent::updatePosture(UFlightTutorialGameInstance* TheGameInstance)
 	TSharedPtr<FJsonObject> json_data;
 	if (FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(*TheGameInstance->ServerMessage), json_data) && json_data.IsValid())
 	{
-		new_yaw =				(float)json_data->GetNumberField("JetYaw");
-		new_pitch =				(float)json_data->GetNumberField("JetPitch");
-		new_roll =				(float)json_data->GetNumberField("JetRoll");
-		new_thrust =			(float)json_data->GetNumberField("Thrust");
-		new_flap_pitch =		(float)json_data->GetNumberField("FlapPitch");
-		new_elevator_pitch =	(float)json_data->GetNumberField("ElevatorPitch");
-		new_left_aileron_yaw =	(float)json_data->GetNumberField("LeftAileronYaw");
+		new_yaw = (float)json_data->GetNumberField("JetYaw");
+		new_pitch = (float)json_data->GetNumberField("JetPitch");
+		new_roll = (float)json_data->GetNumberField("JetRoll");
+		new_thrust = (float)json_data->GetNumberField("Thrust");
+		new_flap_pitch = (float)json_data->GetNumberField("FlapPitch");
+		new_elevator_pitch = (float)json_data->GetNumberField("ElevatorPitch");
+		new_left_aileron_yaw = (float)json_data->GetNumberField("LeftAileronYaw");
 		new_right_aileron_yaw = -new_left_aileron_yaw;
-		new_rudder_yaw =		(float)json_data->GetNumberField("RudderYaw");
-		new_x_position =		(float)json_data->GetNumberField("XPosition");
-		new_y_position =		(float)json_data->GetNumberField("YPosition");
-		new_z_position =		(float)json_data->GetNumberField("ZPosition");
+		new_rudder_yaw = (float)json_data->GetNumberField("RudderYaw");
+		new_x_position = (float)json_data->GetNumberField("XPosition");
+		new_y_position = (float)json_data->GetNumberField("YPosition");
+		new_z_position = (float)json_data->GetNumberField("ZPosition");
 
 	}
-	
 
-	setYawIn			(new_yaw);
-	setPitchIn			(new_pitch);
-	setRollIn			(new_roll);
-	setThrustIn			(new_thrust);
-	setFlapPitchIn		(new_flap_pitch);
-	setElevatorPitchIn	(new_elevator_pitch);
-	setLeftAileronYawIn	(new_left_aileron_yaw);
+
+	setYawIn(new_yaw);
+	setPitchIn(new_pitch);
+	setRollIn(new_roll);
+	setThrustIn(new_thrust);
+	setFlapPitchIn(new_flap_pitch);
+	setElevatorPitchIn(new_elevator_pitch);
+	setLeftAileronYawIn(new_left_aileron_yaw);
 	setRightAileronYawIn(new_right_aileron_yaw);
-	setRudderYawIn		(new_rudder_yaw);
-	setXPositionIn		(new_x_position);
-	setYPositionIn		(new_y_position);
-	setZPositionIn		(new_z_position);
+	setRudderYawIn(new_rudder_yaw);
+	setXPositionIn(new_x_position);
+	setYPositionIn(new_y_position);
+	setZPositionIn(new_z_position);
 
 }

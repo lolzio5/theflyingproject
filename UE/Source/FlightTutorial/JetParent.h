@@ -14,10 +14,10 @@ public:
 	// Sets default values for this pawn's properties
 	AJetParent();
 	UFlightTutorialGameInstance* GameInstance;
-	
+
 
 private:
-	UPROPERTY(BlueprintReadWrite, meta=(AllowPrivateAccess = "true"))
+	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	float yaw_in = 0.0;
 
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
@@ -27,7 +27,7 @@ private:
 	float roll_in = 0.0;
 
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	float thrust_in = 0.0;
+	float thrust_in = 4000.0;
 
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	float flap_pitch_in = 0.0;
@@ -45,13 +45,13 @@ private:
 	float rudder_yaw_in = 0.0;
 
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	float x_position_in = 0.0;
+	float x_position_in = 2643.669434;
 
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	float y_position_in = 0.0;
+	float y_position_in = 32.385994;
 
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	float z_position_in = 0.0;
+	float z_position_in = 726.266418;
 
 public:
 	float getYawIn();
@@ -79,7 +79,7 @@ public:
 	void setXPositionIn(float data);
 	void setYPositionIn(float data);
 	void setZPositionIn(float data);
-	
+
 	UFUNCTION(BlueprintCallable)
 	void updatePosture(UFlightTutorialGameInstance* GameInstance);
 	void NotifyServer();
@@ -88,7 +88,7 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 

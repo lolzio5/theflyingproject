@@ -87,4 +87,4 @@ def updatePosition(CurrentPosition, CurrentThrust, TargetThrust, DeltaSeconds, D
     # Update Position
     NewPosition[2] -= AppliedGravity * DeltaSeconds
 
-    return [NewPosition, CurrentThrust]
+    return NewPosition

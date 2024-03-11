@@ -7,7 +7,8 @@ player_name="Player 1"
 # How many times per second the game should update
 game_tick_rate=10 
 
-cmd="C:/intelFPGA_lite/18.1/nios2eds/Nios II Command Shell.bat nios2-terminal"
+# cmd="C:/intelFPGA_lite/18.1/nios2eds/Nios II Command Shell.bat nios2-terminal"
+cmd="nios2-terminal"
 
 process = subprocess.Popen(
     cmd, 
@@ -64,6 +65,7 @@ async def send_data(websocket):
                 
     #===== Package Data =====#
     location_data={'Name': player_name, 'Thrust': SWITCH, 'Pitch': y_normalised, 'Roll': x_normalised, 'Yaw': BUTTON} # Data from accelerometer must be packaged into a dict
+    # print("Sent data: ", location_data)
     await websocket.send(json.dumps(location_data))
 
 async def main():

@@ -7,7 +7,7 @@ player_name="Player 1"
 game_tick_rate=60 # How many times per second the game should update
 
 cmd="C:/intelFPGA_lite/18.1/nios2eds/Nios II Command Shell.bat nios2-terminal"
-#cmd="nios2-terminal"
+# cmd="nios2-terminal"
 
 process = subprocess.Popen(
     cmd, 
@@ -92,7 +92,7 @@ async def send_data(websocket):
 
 async def main():
     try: 
-        async with websockets.connect('ws://127.0.0.1:12000') as websocket:
+        async with websockets.connect('ws://127.0.0.1:12000', ping_timeout=99999) as websocket:
             print("Websocket connection established.")
             read_task = asyncio.create_task(read_data())
             print("read task generated")

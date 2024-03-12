@@ -108,7 +108,7 @@ int main() {
         alt_32 y_avg = y_sum / N;
 
         // alt_printf("x_read:%x\t y_read: %x\t button_0: %x\t button_1: %x\t switch: %x\n", x_read, y_read, button_0, button_1, slide_switch);
-        alt_printf("x_read:%x\t y_read: %x\t button_0: %x\t button_1: %x\t switch: %x\n", x_avg, y_avg, button_0, button_1, slide_switch);
+        alt_printf("x: %x\t y: %x\t b0: %x\t b1: %x\t s: %x\n", x_avg, y_avg, button_0, button_1, slide_switch);
 
         wait();
     }

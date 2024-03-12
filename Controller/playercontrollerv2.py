@@ -2,10 +2,11 @@ import asyncio
 import websockets
 import json
 import subprocess
+import time
 
 player_name="Player 2"
 # How many times per second the game should update
-game_tick_rate=20
+game_tick_rate=30
 
 #Server IP Address
 server_ip='127.0.0.1'
@@ -40,7 +41,7 @@ async def send_data(websocket):
     if accelerometer_data!=b'' and process.poll() is None:
         output = accelerometer_data.decode("utf-8").strip()
         #===== Extract Data =====#
-        if (("x_read" in output) and ("y_read" in output) and ("button_0" in output) and ("button_1" in output) and ("switch" in output)):
+        if (("x" in output) and ("y" in output) and ("b0" in output) and ("b1" in output) and ("s" in output)):
             x_read = signed_16(int(output.split("\t")[0].split(":")[1].strip(), 16))
             y_read = signed_16(int(output.split("\t")[1].split(":")[1].strip(), 16))
             button_0 = int(output.split("\t")[2].split(":")[1].strip())
@@ -73,7 +74,10 @@ async def send_data(websocket):
 async def main():
     async with websockets.connect(f'ws://{server_ip}:12000', ping_timeout=99999) as websocket:
         await websocket.send(player_name)
-        while True:
+        start=time.time()
+        for i in range(100):
             await send_data(websocket)
             await asyncio.sleep(1/game_tick_rate)
+        end=time.time()
+        print(f"time was{(end-start)/100}")
 asyncio.run(main())

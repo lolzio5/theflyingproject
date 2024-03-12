@@ -37,7 +37,6 @@ async def connected_client(websocket):
             TargetDataDict = json.loads(FPGA_Data)
             StoredDataDict, ClientDataDict = processing(TargetDataDict, StoredDataDict, DeltaSeconds)
             ClientDataDict["Name"]=clients[websocket]
-            print(ClientDataDict)
             await broadcast(json.dumps(ClientDataDict))
         except Exception as e:
             print(f"{clients[websocket]} disconnected with error {e}")

@@ -8,6 +8,8 @@ clients = {}
 # How many times per second the game should update
 game_tick_rate=15
 
+server_ip="0.0.0.0"
+
 # Assign a name to a new connection
 async def new_connection(websocket):
     if len(clients)==0:
@@ -41,6 +43,7 @@ async def connected_client(websocket):
             TargetDataDict = json.loads(FPGA_Data)
             StoredDataDict, ClientDataDict = processing(TargetDataDict, StoredDataDict, DeltaSeconds)
             ClientDataDict["Name"]=clients[websocket]
+            print(f"Sending data {ClientDataDict}")
             await broadcast(json.dumps(ClientDataDict))
         except Exception as e:
             print(f"{clients[websocket]} disconnected with error {e}")
@@ -96,7 +99,7 @@ async def broadcast(message):
             
 async def main():
     # Start the WebSocket server
-    await websockets.serve(connected_client, "127.0.0.1", 12000, ping_timeout=999999)
+    await websockets.serve(connected_client, server_ip, 12000, ping_timeout=999999)
     while True:
         print(f"Number of connected clients: {len(clients)}")
         await asyncio.sleep(5)

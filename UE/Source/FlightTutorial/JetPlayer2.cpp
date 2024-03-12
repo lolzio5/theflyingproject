@@ -1,13 +1,13 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "JetParent.h"
+#include "JetPlayer2.h"
 #include "FlightTutorialGameInstance.h"
 #include "Dom/JsonObject.h"
 #include "Serialization/JsonSerializer.h"
 
 // Sets default values
-AJetParent::AJetParent()
+AJetPlayer2::AJetPlayer2()
 {
 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -15,13 +15,13 @@ AJetParent::AJetParent()
 }
 
 // Called when the game starts or when spawned
-void AJetParent::BeginPlay()
+void AJetPlayer2::BeginPlay()
 {
 	Super::BeginPlay();
 }
 
 // Called every frame
-void AJetParent::Tick(float DeltaTime)
+void AJetPlayer2::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	//UFlightTutorialGameInstance* GameInstance = Cast<UFlightTutorialGameInstance>(GetGameInstance());
@@ -29,7 +29,7 @@ void AJetParent::Tick(float DeltaTime)
 	//NotifyServer();
 }
 
-void AJetParent::NotifyServer()
+void AJetPlayer2::NotifyServer()
 {
 	//UFlightTutorialGameInstance* GameInstance = Cast<UFlightTutorialGameInstance>(GetGameInstance());
 	if (GameInstance)
@@ -42,100 +42,100 @@ void AJetParent::NotifyServer()
 }
 
 // Called to bind functionality to input
-void AJetParent::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+void AJetPlayer2::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-	PlayerInputComponent->BindAction("NotifyServer", IE_Pressed, this, &AJetParent::NotifyServer);
+	PlayerInputComponent->BindAction("NotifyServer", IE_Pressed, this, &AJetPlayer2::NotifyServer);
 }
 
-float AJetParent::getYawIn()
+float AJetPlayer2::getYawIn2()
 {
-	return yaw_in;
+	return yaw_in_2;
 }
-float AJetParent::getPitchIn()
+float AJetPlayer2::getPitchIn2()
 {
-	return pitch_in;
+	return pitch_in_2;
 }
-float AJetParent::getRollIn()
+float AJetPlayer2::getRollIn2()
 {
-	return roll_in;
-}
-
-float AJetParent::getThrustIn()
-{
-	return thrust_in;
-}
-float AJetParent::getFlapPitchIn()
-{
-	return flap_pitch_in;
-}
-float AJetParent::getElevatorPitchIn()
-{
-	return elevator_pitch_in;
-}
-float AJetParent::getLeftAileronYawIn()
-{
-	return left_aileron_yaw_in;
-}
-float AJetParent::getRightAileronYawIn()
-{
-	return right_aileron_yaw_in;
-}
-float AJetParent::getRudderYawIn()
-{
-	return rudder_yaw_in;
+	return roll_in_2;
 }
 
-void AJetParent::setYawIn(float data)
+float AJetPlayer2::getThrustIn2()
 {
-	yaw_in = data;
+	return thrust_in_2;
 }
-void AJetParent::setPitchIn(float data)
+float AJetPlayer2::getFlapPitchIn2()
 {
-	pitch_in = data;
+	return flap_pitch_in_2;
 }
-void AJetParent::setRollIn(float data)
+float AJetPlayer2::getElevatorPitchIn2()
 {
-	roll_in = data;
+	return elevator_pitch_in_2;
 }
-
-void AJetParent::setThrustIn(float data)
+float AJetPlayer2::getLeftAileronYawIn2()
 {
-	thrust_in = data;
+	return left_aileron_yaw_in_2;
 }
-void AJetParent::setFlapPitchIn(float data)
+float AJetPlayer2::getRightAileronYawIn2()
 {
-	flap_pitch_in = data;
+	return right_aileron_yaw_in_2;
 }
-void AJetParent::setElevatorPitchIn(float data)
+float AJetPlayer2::getRudderYawIn2()
 {
-	elevator_pitch_in = data;
-}
-void AJetParent::setLeftAileronYawIn(float data)
-{
-	left_aileron_yaw_in = data;
-}
-void AJetParent::setRightAileronYawIn(float data)
-{
-	right_aileron_yaw_in = data;
-}
-void AJetParent::setRudderYawIn(float data)
-{
-	rudder_yaw_in = data;
+	return rudder_yaw_in_2;
 }
 
-void AJetParent::updatePosture(UFlightTutorialGameInstance* TheGameInstance)
+void AJetPlayer2::setYawIn2(float data)
+{
+	yaw_in_2 = data;
+}
+void AJetPlayer2::setPitchIn2(float data)
+{
+	pitch_in_2 = data;
+}
+void AJetPlayer2::setRollIn2(float data)
+{
+	roll_in_2 = data;
+}
+
+void AJetPlayer2::setThrustIn2(float data)
+{
+	thrust_in_2 = data;
+}
+void AJetPlayer2::setFlapPitchIn2(float data)
+{
+	flap_pitch_in_2 = data;
+}
+void AJetPlayer2::setElevatorPitchIn2(float data)
+{
+	elevator_pitch_in_2 = data;
+}
+void AJetPlayer2::setLeftAileronYawIn2(float data)
+{
+	left_aileron_yaw_in_2 = data;
+}
+void AJetPlayer2::setRightAileronYawIn2(float data)
+{
+	right_aileron_yaw_in_2 = data;
+}
+void AJetPlayer2::setRudderYawIn2(float data)
+{
+	rudder_yaw_in_2 = data;
+}
+
+void AJetPlayer2::updatePosture(UFlightTutorialGameInstance* TheGameInstance)
 {
 	TheGameInstance = Cast<UFlightTutorialGameInstance>(GetGameInstance());
-	float current_yaw = getYawIn();
-	float current_pitch = getPitchIn();
-	float current_roll = getRollIn();
-	float current_thrust = getThrustIn();
-	float current_flap_pitch = getFlapPitchIn();
-	float current_elevator_pitch = getElevatorPitchIn();
-	float current_left_aileron_yaw = getLeftAileronYawIn();
-	float current_right_aileron_yaw = getRightAileronYawIn();
-	float current_rudder_yaw = getRudderYawIn();
+	float current_yaw = getYawIn2();
+	float current_pitch = getPitchIn2();
+	float current_roll = getRollIn2();
+	float current_thrust = getThrustIn2();
+	float current_flap_pitch = getFlapPitchIn2();
+	float current_elevator_pitch = getElevatorPitchIn2();
+	float current_left_aileron_yaw = getLeftAileronYawIn2();
+	float current_right_aileron_yaw = getRightAileronYawIn2();
+	float current_rudder_yaw = getRudderYawIn2();
 
 	/*GEngine->AddOnScreenDebugMessage(-1, 0.005, FColor::Green, "yaw: " + FString::SanitizeFloat(current_yaw));
 	GEngine->AddOnScreenDebugMessage(-1, 0.005, FColor::Green, "pitch: " + FString::SanitizeFloat(current_pitch));
@@ -161,7 +161,7 @@ void AJetParent::updatePosture(UFlightTutorialGameInstance* TheGameInstance)
 	TSharedPtr<FJsonObject> json_data;
 	if (FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(*TheGameInstance->ServerMessage), json_data) && json_data.IsValid())
 	{
-		if ((FString)json_data->GetStringField("Name") == "Player 1")
+		if ((FString)json_data->GetStringField("Name") == "Player 2")
 		{
 			new_yaw = (float)json_data->GetNumberField("JetYaw");
 			new_pitch = (float)json_data->GetNumberField("JetPitch");
@@ -175,14 +175,14 @@ void AJetParent::updatePosture(UFlightTutorialGameInstance* TheGameInstance)
 		}
 	}
 
-	setYawIn(new_yaw);
-	setPitchIn(new_pitch);
-	setRollIn(new_roll);
-	setThrustIn(new_thrust);
-	setFlapPitchIn(new_flap_pitch);
-	setElevatorPitchIn(new_elevator_pitch);
-	setLeftAileronYawIn(new_left_aileron_yaw);
-	setRightAileronYawIn(new_right_aileron_yaw);
-	setRudderYawIn(new_rudder_yaw);
+	setYawIn2(new_yaw);
+	setPitchIn2(new_pitch);
+	setRollIn2(new_roll);
+	setThrustIn2(new_thrust);
+	setFlapPitchIn2(new_flap_pitch);
+	setElevatorPitchIn2(new_elevator_pitch);
+	setLeftAileronYawIn2(new_left_aileron_yaw);
+	setRightAileronYawIn2(new_right_aileron_yaw);
+	setRudderYawIn2(new_rudder_yaw);
 
 }

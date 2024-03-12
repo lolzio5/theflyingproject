@@ -6,20 +6,14 @@ import updatePositions as p
 # Dictionary to store clients
 clients = {}
 # How many times per second the game should update
-game_tick_rate=15
+game_tick_rate=25
 
-server_ip="0.0.0.0"
+server_ip="127.0.0.1"
 
 # Assign a name to a new connection
 async def new_connection(websocket):
-    if len(clients)==0:
-        clients[websocket] = "Player 1"
-    elif len(clients)==1:
-        clients[websocket] = "Player 1"
-    elif len(clients)==2:
-        clients[websocket] = "Player 2"
-    elif len(clients)==3:
-        clients[websocket] = "Player 2"
+    name = await websocket.recv()
+    clients[websocket] = name
     await broadcast(f"Welcome to the game, {clients[websocket]}")
 
 async def connected_client(websocket):
@@ -43,7 +37,7 @@ async def connected_client(websocket):
             TargetDataDict = json.loads(FPGA_Data)
             StoredDataDict, ClientDataDict = processing(TargetDataDict, StoredDataDict, DeltaSeconds)
             ClientDataDict["Name"]=clients[websocket]
-            print(f"Sending data {ClientDataDict}")
+            print(ClientDataDict)
             await broadcast(json.dumps(ClientDataDict))
         except Exception as e:
             print(f"{clients[websocket]} disconnected with error {e}")

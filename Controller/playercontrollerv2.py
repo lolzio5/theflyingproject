@@ -72,6 +72,7 @@ async def send_data(websocket):
 
 async def main():
     async with websockets.connect(f'ws://{server_ip}:12000', ping_timeout=99999) as websocket:
+        await websocket.send(player_name)
         while True:
             await send_data(websocket)
             await asyncio.sleep(1/game_tick_rate)

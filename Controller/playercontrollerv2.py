@@ -5,10 +5,10 @@ import subprocess
 
 player_name="Player 2"
 # How many times per second the game should update
-game_tick_rate=10 
+game_tick_rate=20
 
 #Server IP Address
-server_ip='13.42.37.91'
+server_ip='127.0.0.1'
 
 cmd="C:/intelFPGA_lite/18.1/nios2eds/Nios II Command Shell.bat nios2-terminal"
 # cmd="nios2-terminal"

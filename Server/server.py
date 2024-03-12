@@ -79,7 +79,7 @@ def processing(TargetData, StoredData, DeltaSeconds):
     StoredData['Pitch']=Pitch[-1]
     StoredData['Roll']=Roll[-1]
     StoredData['Yaw']=Yaw[-1]
-    StoredData['Position']=Position[0]
+    StoredData['Position']=Position
     return StoredData, ClientData
 
 # Broadcast to all connected clients
@@ -96,7 +96,7 @@ async def broadcast(message):
             
 async def main():
     # Start the WebSocket server
-    await websockets.serve(connected_client, "0.0.0.0", 12000, ping_timeout=999999)
+    await websockets.serve(connected_client, "127.0.0.1", 12000, ping_timeout=999999)
     while True:
         print(f"Number of connected clients: {len(clients)}")
         await asyncio.sleep(5)

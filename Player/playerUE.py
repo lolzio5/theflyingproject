@@ -6,7 +6,7 @@ player_name="Player 1"
 game_tick_rate=20
 
 async def main():
-    async with websockets.connect('ws://127.0.0.1:12000') as websocket:
+    async with websockets.connect('ws://18.130.215.50:12000') as websocket:
         while True:
             data=await websocket.recv()
             if data[0]!='W':

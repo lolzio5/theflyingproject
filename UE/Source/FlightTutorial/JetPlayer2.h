@@ -3,67 +3,67 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
-#include "JetParent.generated.h"
+#include "JetPlayer2.generated.h"
 
 UCLASS()
-class FLIGHTTUTORIAL_API AJetParent : public APawn
+class FLIGHTTUTORIAL_API AJetPlayer2 : public APawn
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this pawn's properties
-	AJetParent();
+	AJetPlayer2();
 	UFlightTutorialGameInstance* GameInstance;
 
 private:
 
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	float yaw_in = 0.0;
+	float yaw_in_2 = 0.0;
 
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	float pitch_in = 0.0;
+	float pitch_in_2 = 0.0;
 
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	float roll_in = 0.0;
+	float roll_in_2 = 0.0;
 
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	float thrust_in = 4000.0;
+	float thrust_in_2 = 4000.0;
 
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	float flap_pitch_in = 0.0;
+	float flap_pitch_in_2 = 0.0;
 
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	float elevator_pitch_in = 0.0;
+	float elevator_pitch_in_2 = 0.0;
 
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	float left_aileron_yaw_in = 0.0;
+	float left_aileron_yaw_in_2 = 0.0;
 
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	float right_aileron_yaw_in = 0.0;
+	float right_aileron_yaw_in_2 = 0.0;
 
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	float rudder_yaw_in = 0.0;
+	float rudder_yaw_in_2 = 0.0;
 
 public:
-	float getYawIn();
-	float getPitchIn();
-	float getRollIn();
-	float getThrustIn();
-	float getFlapPitchIn();
-	float getElevatorPitchIn();
-	float getLeftAileronYawIn();
-	float getRightAileronYawIn();
-	float getRudderYawIn();
+	float getYawIn2();
+	float getPitchIn2();
+	float getRollIn2();
+	float getThrustIn2();
+	float getFlapPitchIn2();
+	float getElevatorPitchIn2();
+	float getLeftAileronYawIn2();
+	float getRightAileronYawIn2();
+	float getRudderYawIn2();
 
-	void setYawIn(float data);
-	void setPitchIn(float data);
-	void setRollIn(float data);
-	void setThrustIn(float data);
-	void setFlapPitchIn(float data);
-	void setElevatorPitchIn(float data);
-	void setLeftAileronYawIn(float data);
-	void setRightAileronYawIn(float data);
-	void setRudderYawIn(float data);
+	void setYawIn2(float data);
+	void setPitchIn2(float data);
+	void setRollIn2(float data);
+	void setThrustIn2(float data);
+	void setFlapPitchIn2(float data);
+	void setElevatorPitchIn2(float data);
+	void setLeftAileronYawIn2(float data);
+	void setRightAileronYawIn2(float data);
+	void setRudderYawIn2(float data);
 
 	UFUNCTION(BlueprintCallable)
 	void updatePosture(UFlightTutorialGameInstance* GameInstance);

@@ -1,6 +1,8 @@
 import asyncio
 import websockets
 import json
+import boto3
+import dynamoDB.leaderboard as lb
 import updatePositions as p
 
 # Dictionary to store clients
@@ -33,6 +35,12 @@ async def connected_client(websocket):
     
     # Receive data from the server, process it and broadcast to all clients
     while True:
+        #######################Update dynamoDB##########################
+        dynamodb = boto3.resource('dynamodb')
+        json_data = await websockets.recv()
+        if lb.update_leaderboard(dynamodb, json_data):
+            continue
+        
         try:
             FPGA_Data = await websocket.recv()
             print(FPGA_Data)
@@ -44,6 +52,7 @@ async def connected_client(websocket):
             print(f"{clients[websocket]} disconnected with error {e}")
             del clients[websocket]
             break
+    
         await asyncio.sleep(DeltaSeconds)
 
 def processing(TargetData, StoredData, DeltaSeconds):
@@ -90,7 +99,7 @@ async def broadcast(message):
         del clients[websocket]
             
 async def main():
-    # Start the WebSocket server
+    # Start the WebSocket server 
     await websockets.serve(connected_client, server_ip, 12000, ping_timeout=999999)
     while True:
         print(f"Number of connected clients: {len(clients)}")

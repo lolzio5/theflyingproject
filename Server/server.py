@@ -42,8 +42,8 @@ async def connected_client(websocket):
             StoredDataDict, ClientDataDict = processing(TargetDataDict, StoredDataDict, DeltaSeconds)
             ClientDataDict["Name"]=clients[websocket]
             await broadcast(json.dumps(ClientDataDict))
-        except:
-            print(f"{clients[websocket]} disconnected")
+        except Exception as e:
+            print(f"{clients[websocket]} disconnected with error {e}")
             del clients[websocket]
             break
         await asyncio.sleep(DeltaSeconds)

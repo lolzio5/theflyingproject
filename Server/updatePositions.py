@@ -68,7 +68,7 @@ def updateRoll(CurrentRoll, TargetRoll, DeltaSeconds):
     return [JetRoll, -AileronYaw, CurrentRoll]
 
 def updateYaw(CurrentYaw, TargetYaw, DeltaSeconds):
-    MaxRudderYaw=45\
+    MaxRudderYaw=45
 
     CurrentYaw = interpolate_to(CurrentYaw, TargetYaw, DeltaSeconds, 10)
     
@@ -106,7 +106,7 @@ def updatePosition(CurrentPosition, CurrentThrust, TargetThrust, DeltaSeconds):
     # Update Position
     NewPosition[2] += AppliedGravity * DeltaSeconds
 
-    return [NewPosition, CurrentThrust]
+    return NewPosition
 
 
 

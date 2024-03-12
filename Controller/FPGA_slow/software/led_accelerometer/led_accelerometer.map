@@ -286,149 +286,149 @@ LOAD d:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nio
  *(.jcr)
                 0x0000000000010d3c                . = ALIGN (0x4)
 
-.rodata         0x0000000000010d3c       0x64
+.rodata         0x0000000000010d3c       0x4c
                 0x0000000000010d3c                PROVIDE (__ram_rodata_start, ABSOLUTE (.))
                 0x0000000000010d3c                . = ALIGN (0x4)
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  .rodata.str1.4
-                0x0000000000010d3c       0x57 obj/default/led_acceleromter_2D.o
+                0x0000000000010d3c       0x3d obj/default/led_acceleromter_2D.o
  .rodata.str1.4
-                0x0000000000010d93       0x17 ../led_accelerometer_bsp/\libhal_bsp.a(alt_sys_init.o)
- *fill*         0x0000000000010d93        0x1 
+                0x0000000000010d79       0x17 ../led_accelerometer_bsp/\libhal_bsp.a(alt_sys_init.o)
+ *fill*         0x0000000000010d79        0x3 
  .rodata.str1.4
-                0x0000000000010d94        0xc ../led_accelerometer_bsp/\libhal_bsp.a(alt_dev.o)
+                0x0000000000010d7c        0xc ../led_accelerometer_bsp/\libhal_bsp.a(alt_dev.o)
                                           0xa (size before relaxing)
  *(.rodata1)
-                0x0000000000010da0                . = ALIGN (0x4)
-                0x0000000000010da0                PROVIDE (__ram_rodata_end, ABSOLUTE (.))
+                0x0000000000010d88                . = ALIGN (0x4)
+                0x0000000000010d88                PROVIDE (__ram_rodata_end, ABSOLUTE (.))
                 0x0000000000010d3c                PROVIDE (__flash_rodata_start, LOADADDR (.rodata))
 
-.rwdata         0x0000000000010da0       0xa4 load address 0x0000000000010e44
-                0x0000000000010da0                PROVIDE (__ram_rwdata_start, ABSOLUTE (.))
-                0x0000000000010da0                . = ALIGN (0x4)
+.rwdata         0x0000000000010d88       0xa4 load address 0x0000000000010e2c
+                0x0000000000010d88                PROVIDE (__ram_rwdata_start, ABSOLUTE (.))
+                0x0000000000010d88                . = ALIGN (0x4)
  *(.got.plt)
  *(.got)
  *(.data1)
  *(.data .data.* .gnu.linkonce.d.*)
- .data          0x0000000000010da0        0x0 ../led_accelerometer_bsp//obj/HAL/src/crt0.o
- .data          0x0000000000010da0        0x0 obj/default/led_acceleromter_2D.o
- .data          0x0000000000010da0        0x0 d:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
- .data          0x0000000000010da0        0x0 d:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memset.o)
- .data          0x0000000000010da0        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_irq_register.o)
- .data          0x0000000000010da0        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_irq_vars.o)
- .data          0x0000000000010da0        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_load.o)
- .data          0x0000000000010da0        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_main.o)
- .data          0x0000000000010da0        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_printf.o)
- .data          0x0000000000010da0        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_putchar.o)
- .data          0x0000000000010da0       0x2c ../led_accelerometer_bsp/\libhal_bsp.a(alt_sys_init.o)
- .data          0x0000000000010dcc        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .data          0x0000000000010dcc        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(altera_up_avalon_accelerometer_spi.o)
- .data          0x0000000000010dcc        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .data          0x0000000000010dcc       0x58 ../led_accelerometer_bsp/\libhal_bsp.a(alt_dev.o)
-                0x0000000000010dcc                alt_fd_list
-                0x0000000000010dfc                alt_dev_null
- .data          0x0000000000010e24        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
- .data          0x0000000000010e24        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_errno.o)
- .data          0x0000000000010e24        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_find_dev.o)
- .data          0x0000000000010e24        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .data          0x0000000000010e24        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_irq_entry.o)
- .data          0x0000000000010e24        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_irq_handler.o)
- .data          0x0000000000010e24        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
- .data          0x0000000000010e24        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_exception_entry.o)
- .data          0x0000000000010e24        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
- .data          0x0000000000010e24        0x0 d:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-int_errno.o)
- .data          0x0000000000010e24        0x0 d:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memcmp.o)
- .data          0x0000000000010e24        0x0 d:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
-                0x0000000000018e24                _gp = ABSOLUTE ((. + 0x8000))
+ .data          0x0000000000010d88        0x0 ../led_accelerometer_bsp//obj/HAL/src/crt0.o
+ .data          0x0000000000010d88        0x0 obj/default/led_acceleromter_2D.o
+ .data          0x0000000000010d88        0x0 d:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+ .data          0x0000000000010d88        0x0 d:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memset.o)
+ .data          0x0000000000010d88        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_irq_register.o)
+ .data          0x0000000000010d88        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_irq_vars.o)
+ .data          0x0000000000010d88        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_load.o)
+ .data          0x0000000000010d88        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_main.o)
+ .data          0x0000000000010d88        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_printf.o)
+ .data          0x0000000000010d88        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_putchar.o)
+ .data          0x0000000000010d88       0x2c ../led_accelerometer_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .data          0x0000000000010db4        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .data          0x0000000000010db4        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(altera_up_avalon_accelerometer_spi.o)
+ .data          0x0000000000010db4        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .data          0x0000000000010db4       0x58 ../led_accelerometer_bsp/\libhal_bsp.a(alt_dev.o)
+                0x0000000000010db4                alt_fd_list
+                0x0000000000010de4                alt_dev_null
+ .data          0x0000000000010e0c        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+ .data          0x0000000000010e0c        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_errno.o)
+ .data          0x0000000000010e0c        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_find_dev.o)
+ .data          0x0000000000010e0c        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .data          0x0000000000010e0c        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ .data          0x0000000000010e0c        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .data          0x0000000000010e0c        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .data          0x0000000000010e0c        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ .data          0x0000000000010e0c        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+ .data          0x0000000000010e0c        0x0 d:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-int_errno.o)
+ .data          0x0000000000010e0c        0x0 d:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memcmp.o)
+ .data          0x0000000000010e0c        0x0 d:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+                0x0000000000018e0c                _gp = ABSOLUTE ((. + 0x8000))
                 [!provide]                        PROVIDE (gp, _gp)
  *(.rwdata .rwdata.*)
  *(.sdata .sdata.* .gnu.linkonce.s.*)
- .sdata         0x0000000000010e24        0x4 ../led_accelerometer_bsp/\libhal_bsp.a(alt_irq_vars.o)
-                0x0000000000010e24                alt_priority_mask
- .sdata         0x0000000000010e28        0x4 ../led_accelerometer_bsp/\libhal_bsp.a(alt_sys_init.o)
-                0x0000000000010e28                jtag_uart
- .sdata         0x0000000000010e2c       0x14 ../led_accelerometer_bsp/\libhal_bsp.a(alt_dev.o)
-                0x0000000000010e2c                alt_max_fd
-                0x0000000000010e30                alt_dev_list
-                0x0000000000010e38                alt_fs_list
- .sdata         0x0000000000010e40        0x4 ../led_accelerometer_bsp/\libhal_bsp.a(alt_errno.o)
-                0x0000000000010e40                alt_errno
+ .sdata         0x0000000000010e0c        0x4 ../led_accelerometer_bsp/\libhal_bsp.a(alt_irq_vars.o)
+                0x0000000000010e0c                alt_priority_mask
+ .sdata         0x0000000000010e10        0x4 ../led_accelerometer_bsp/\libhal_bsp.a(alt_sys_init.o)
+                0x0000000000010e10                jtag_uart
+ .sdata         0x0000000000010e14       0x14 ../led_accelerometer_bsp/\libhal_bsp.a(alt_dev.o)
+                0x0000000000010e14                alt_max_fd
+                0x0000000000010e18                alt_dev_list
+                0x0000000000010e20                alt_fs_list
+ .sdata         0x0000000000010e28        0x4 ../led_accelerometer_bsp/\libhal_bsp.a(alt_errno.o)
+                0x0000000000010e28                alt_errno
  *(.sdata2 .sdata2.* .gnu.linkonce.s2.*)
-                0x0000000000010e44                . = ALIGN (0x4)
-                0x0000000000010e44                _edata = ABSOLUTE (.)
+                0x0000000000010e2c                . = ALIGN (0x4)
+                0x0000000000010e2c                _edata = ABSOLUTE (.)
                 [!provide]                        PROVIDE (edata, ABSOLUTE (.))
-                0x0000000000010e44                PROVIDE (__ram_rwdata_end, ABSOLUTE (.))
-                0x0000000000010e44                PROVIDE (__flash_rwdata_start, LOADADDR (.rwdata))
+                0x0000000000010e2c                PROVIDE (__ram_rwdata_end, ABSOLUTE (.))
+                0x0000000000010e2c                PROVIDE (__flash_rwdata_start, LOADADDR (.rwdata))
 
-.bss            0x0000000000010ee8      0x124
-                0x0000000000010ee8                __bss_start = ABSOLUTE (.)
+.bss            0x0000000000010ed0      0x124
+                0x0000000000010ed0                __bss_start = ABSOLUTE (.)
                 [!provide]                        PROVIDE (__sbss_start, ABSOLUTE (.))
                 [!provide]                        PROVIDE (___sbss_start, ABSOLUTE (.))
  *(.dynsbss)
  *(.sbss .sbss.* .gnu.linkonce.sb.*)
- .sbss          0x0000000000010ee8        0x1 obj/default/led_acceleromter_2D.o
-                0x0000000000010ee8                pwm
- *fill*         0x0000000000010ee9        0x3 
- .sbss          0x0000000000010eec        0x8 obj/default/led_acceleromter_2D.o
-                0x0000000000010eec                led
-                0x0000000000010ef0                level
- .sbss          0x0000000000010ef4        0x4 ../led_accelerometer_bsp/\libhal_bsp.a(alt_irq_vars.o)
-                0x0000000000010ef4                alt_irq_active
- .sbss          0x0000000000010ef8        0xc ../led_accelerometer_bsp/\libhal_bsp.a(alt_main.o)
-                0x0000000000010ef8                alt_envp
-                0x0000000000010efc                alt_argv
-                0x0000000000010f00                alt_argc
- .sbss          0x0000000000010f04        0x4 ../led_accelerometer_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
-                0x0000000000010f04                alt_instruction_exception_handler
- .sbss          0x0000000000010f08        0x4 d:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-int_errno.o)
-                0x0000000000010f08                errno
+ .sbss          0x0000000000010ed0        0x1 obj/default/led_acceleromter_2D.o
+                0x0000000000010ed0                pwm
+ *fill*         0x0000000000010ed1        0x3 
+ .sbss          0x0000000000010ed4        0x8 obj/default/led_acceleromter_2D.o
+                0x0000000000010ed4                led
+                0x0000000000010ed8                level
+ .sbss          0x0000000000010edc        0x4 ../led_accelerometer_bsp/\libhal_bsp.a(alt_irq_vars.o)
+                0x0000000000010edc                alt_irq_active
+ .sbss          0x0000000000010ee0        0xc ../led_accelerometer_bsp/\libhal_bsp.a(alt_main.o)
+                0x0000000000010ee0                alt_envp
+                0x0000000000010ee4                alt_argv
+                0x0000000000010ee8                alt_argc
+ .sbss          0x0000000000010eec        0x4 ../led_accelerometer_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+                0x0000000000010eec                alt_instruction_exception_handler
+ .sbss          0x0000000000010ef0        0x4 d:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-int_errno.o)
+                0x0000000000010ef0                errno
  *(.sbss2 .sbss2.* .gnu.linkonce.sb2.*)
  *(.scommon)
                 [!provide]                        PROVIDE (__sbss_end, ABSOLUTE (.))
                 [!provide]                        PROVIDE (___sbss_end, ABSOLUTE (.))
  *(.dynbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
- .bss           0x0000000000010f0c        0x0 ../led_accelerometer_bsp//obj/HAL/src/crt0.o
- .bss           0x0000000000010f0c        0x0 obj/default/led_acceleromter_2D.o
- .bss           0x0000000000010f0c        0x0 d:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
- .bss           0x0000000000010f0c        0x0 d:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memset.o)
- .bss           0x0000000000010f0c        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_irq_register.o)
- .bss           0x0000000000010f0c        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_irq_vars.o)
- .bss           0x0000000000010f0c        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_load.o)
- .bss           0x0000000000010f0c        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_main.o)
- .bss           0x0000000000010f0c        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_printf.o)
- .bss           0x0000000000010f0c        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_putchar.o)
- .bss           0x0000000000010f0c        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_sys_init.o)
- .bss           0x0000000000010f0c        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .bss           0x0000000000010f0c        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(altera_up_avalon_accelerometer_spi.o)
- .bss           0x0000000000010f0c        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .bss           0x0000000000010f0c        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_dev.o)
- .bss           0x0000000000010f0c        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
- .bss           0x0000000000010f0c        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_errno.o)
- .bss           0x0000000000010f0c        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_find_dev.o)
- .bss           0x0000000000010f0c        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .bss           0x0000000000010f0c        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_irq_entry.o)
- .bss           0x0000000000010f0c        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_irq_handler.o)
- .bss           0x0000000000010f0c        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
- .bss           0x0000000000010f0c        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_exception_entry.o)
- .bss           0x0000000000010f0c        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
- .bss           0x0000000000010f0c        0x0 d:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-int_errno.o)
- .bss           0x0000000000010f0c        0x0 d:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memcmp.o)
- .bss           0x0000000000010f0c        0x0 d:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+ .bss           0x0000000000010ef4        0x0 ../led_accelerometer_bsp//obj/HAL/src/crt0.o
+ .bss           0x0000000000010ef4        0x0 obj/default/led_acceleromter_2D.o
+ .bss           0x0000000000010ef4        0x0 d:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+ .bss           0x0000000000010ef4        0x0 d:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memset.o)
+ .bss           0x0000000000010ef4        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_irq_register.o)
+ .bss           0x0000000000010ef4        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_irq_vars.o)
+ .bss           0x0000000000010ef4        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_load.o)
+ .bss           0x0000000000010ef4        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_main.o)
+ .bss           0x0000000000010ef4        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_printf.o)
+ .bss           0x0000000000010ef4        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_putchar.o)
+ .bss           0x0000000000010ef4        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .bss           0x0000000000010ef4        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .bss           0x0000000000010ef4        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(altera_up_avalon_accelerometer_spi.o)
+ .bss           0x0000000000010ef4        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .bss           0x0000000000010ef4        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_dev.o)
+ .bss           0x0000000000010ef4        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+ .bss           0x0000000000010ef4        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_errno.o)
+ .bss           0x0000000000010ef4        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_find_dev.o)
+ .bss           0x0000000000010ef4        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .bss           0x0000000000010ef4        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ .bss           0x0000000000010ef4        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .bss           0x0000000000010ef4        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .bss           0x0000000000010ef4        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ .bss           0x0000000000010ef4        0x0 ../led_accelerometer_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+ .bss           0x0000000000010ef4        0x0 d:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-int_errno.o)
+ .bss           0x0000000000010ef4        0x0 d:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-memcmp.o)
+ .bss           0x0000000000010ef4        0x0 d:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
  *(COMMON)
- COMMON         0x0000000000010f0c      0x100 ../led_accelerometer_bsp/\libhal_bsp.a(alt_irq_handler.o)
-                0x0000000000010f0c                alt_irq
-                0x000000000001100c                . = ALIGN (0x4)
-                0x000000000001100c                __bss_end = ABSOLUTE (.)
+ COMMON         0x0000000000010ef4      0x100 ../led_accelerometer_bsp/\libhal_bsp.a(alt_irq_handler.o)
+                0x0000000000010ef4                alt_irq
+                0x0000000000010ff4                . = ALIGN (0x4)
+                0x0000000000010ff4                __bss_end = ABSOLUTE (.)
 
-.onchip_memory  0x000000000001100c        0x0
+.onchip_memory  0x0000000000010ff4        0x0
                 [!provide]                        PROVIDE (_alt_partition_onchip_memory_start, ABSOLUTE (.))
  *(.onchip_memory .onchip_memory. onchip_memory.*)
-                0x000000000001100c                . = ALIGN (0x4)
+                0x0000000000010ff4                . = ALIGN (0x4)
                 [!provide]                        PROVIDE (_alt_partition_onchip_memory_end, ABSOLUTE (.))
-                0x000000000001100c                _end = ABSOLUTE (.)
-                0x000000000001100c                end = ABSOLUTE (.)
-                0x000000000001100c                __alt_stack_base = ABSOLUTE (.)
+                0x0000000000010ff4                _end = ABSOLUTE (.)
+                0x0000000000010ff4                end = ABSOLUTE (.)
+                0x0000000000010ff4                __alt_stack_base = ABSOLUTE (.)
                 [!provide]                        PROVIDE (_alt_partition_onchip_memory_load_addr, LOADADDR (.onchip_memory))
 
 .stab

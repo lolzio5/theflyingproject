@@ -6,7 +6,8 @@ import time
 #from pynput.mouse       import Button
 
 ### Command to start the Nios II Terminal
-cmd = "C:/intelFPGA_lite/18.1/nios2eds/Nios II Command Shell.bat nios2-terminal"
+# cmd = "C:/intelFPGA_lite/18.1/nios2eds/Nios II Command Shell.bat nios2-terminal"
+cmd = "nios2-terminal"
 
 ### Start the Nios II Terminal as a subprocess using python library subprocess
 process = subprocess.Popen(
@@ -45,15 +46,11 @@ while True:
         # print(output)
 
         ### Extract x_read, y_read, button_0, button_1, switch values from FPGA output
-        if "x_read" in output:
-            x_read = signed_16(int(output.split("\t")[0].split(":")[1].strip(), 16)) # range approx -255 to 255
-        if "y_read" in output: 
-            y_read = signed_16(int(output.split("\t")[1].split(":")[1].strip(), 16)) # range approx -255 to 255
-        if "button_0" in output:
+        if (("x" in output) and ("y" in output) and ("b0" in output) and ("b1" in output) and ("s" in output)):
+            x_read = signed_16(int(output.split("\t")[0].split(":")[1].strip(), 16))
+            y_read = signed_16(int(output.split("\t")[1].split(":")[1].strip(), 16))
             button_0 = int(output.split("\t")[2].split(":")[1].strip())
-        if "button_1" in output:
             button_1 = int(output.split("\t")[3].split(":")[1].strip())
-        if "switch" in output:
             switches = int(output.split("\t")[4].split(":")[1].strip(), 16)
         
         print("raw x_read: ", x_read, "  raw y_read: ", y_read, "  button_0: ", button_0, "  button_1: ", button_1, "  switches: ", switches)
@@ -72,7 +69,7 @@ while True:
         else:
             SWITCH = 0
             
-        #print("raw x_read: ", x_read, "  raw y_read: ", y_read, "  BUTTON: ", BUTTON, "  SWITCH: ", SWITCH)
+        # print("raw x_read: ", x_read, "  raw y_read: ", y_read, "  BUTTON: ", BUTTON, "  SWITCH: ", SWITCH)
 
         ### Map x_read and y_read values to [-1, 1]
         x_normalised = map_to_range(x_read, -255, 255, 1, -1)

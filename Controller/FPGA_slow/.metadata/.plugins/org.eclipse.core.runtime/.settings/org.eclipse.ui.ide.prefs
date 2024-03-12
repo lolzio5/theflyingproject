@@ -1,4 +1,7 @@
+IMPORT_FILES_AND_FOLDERS_MODE=prompt
+IMPORT_FILES_AND_FOLDERS_VIRTUAL_FOLDER_MODE=prompt
 PROBLEMS_FILTERS_MIGRATE=true
+SHOW_LOCATION=true
 eclipse.preferences.version=1
 platformState=1706830730045
 quickStart=false

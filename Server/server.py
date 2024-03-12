@@ -8,7 +8,8 @@ clients = {}
 # How many times per second the game should update
 game_tick_rate=240
 
-server_ip="0.0.0.0"
+# server_ip="0.0.0.0"
+server_ip="127.0.0.1"
 
 # Assign a name to a new connection
 async def new_connection(websocket):
@@ -34,6 +35,7 @@ async def connected_client(websocket):
     while True:
         try:
             FPGA_Data = await websocket.recv()
+            print(FPGA_Data)
             TargetDataDict = json.loads(FPGA_Data)
             StoredDataDict, ClientDataDict = processing(TargetDataDict, StoredDataDict, DeltaSeconds)
             ClientDataDict["Name"]=clients[websocket]

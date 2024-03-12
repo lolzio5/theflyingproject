@@ -1,4 +1,4 @@
-11:54:39 **** Incremental Build of configuration Nios II for project player_1 ****
+15:12:50 **** Incremental Build of configuration Nios II for project player_1 ****
 make all 
 Info: Building ../player_1_bsp/
 C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../player_1_bsp/
@@ -12,11 +12,11 @@ player_1.c:111:9: warning: implicit declaration of function 'alt_printf' [-Wimpl
 Info: Linking player_1.elf
 nios2-elf-g++  -T'../player_1_bsp//linker.x' -msys-crt0='../player_1_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../player_1_bsp/  -msmallc  -Wl,-Map=player_1.map   -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o player_1.elf obj/default/player_1.o -lm -msys-lib=m
 nios2-elf-insert player_1.elf --thread_model hal --cpu_name cpu --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name nios_accelerometer --quartus_project_dir "C:/Users/themi/Desktop/Labs/theflyingproject/Controller/FPGA_Faster" --sopcinfo C:/Users/themi/Desktop/Labs/theflyingproject/Controller/FPGA_Faster/software/player_1_bsp/../../nios_accelerometer.sopcinfo
-Info: (player_1.elf) 4000 Bytes program size (code + initialized data).
+Info: (player_1.elf) 4004 Bytes program size (code + initialized data).
 Info:                59 KBytes free for stack + heap.
 Info: Creating player_1.objdump
 nios2-elf-objdump --disassemble --syms --all-header --source player_1.elf >player_1.objdump
 [player_1 build complete]
 
-11:54:41 Build Finished (took 1s.887ms)
+15:12:52 Build Finished (took 1s.825ms)
 

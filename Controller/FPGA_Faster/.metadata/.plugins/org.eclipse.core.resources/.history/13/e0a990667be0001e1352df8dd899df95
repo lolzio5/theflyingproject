@@ -53,7 +53,7 @@ void timer_init(void * isr) {
 }
 
 void wait() {
-    unsigned long long cycles = 20 * 5000;
+    unsigned long long cycles = 5 * 5000;
     for (unsigned long long i = 0; i < cycles; i++) {
         asm volatile ("nop");
     }

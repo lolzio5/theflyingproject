@@ -14,7 +14,7 @@ def create_leaderboard_table(dynamodb=None):
         ],
         AttributeDefinitions=[
             {
-                'AttributeName': 'UserID',
+                'AttributeName': 'PlayedTime',
                 'AttributeType': 'S'
             },
         ],

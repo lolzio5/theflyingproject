@@ -2,14 +2,13 @@ import asyncio
 import websockets
 import json
 import subprocess
-import time
 
 player_name="Player 2"
 # How many times per second the game should update
-game_tick_rate=30
+game_tick_rate=120
 
 #Server IP Address
-server_ip='127.0.0.1'
+server_ip='18.130.215.50'
 
 cmd="C:/intelFPGA_lite/18.1/nios2eds/Nios II Command Shell.bat nios2-terminal"
 # cmd="nios2-terminal"
@@ -27,16 +26,6 @@ def map_to_range(num, inMin, inMax, outMin, outMax):
     return outMin + (float(num - inMin) * float(outMax - outMin) / float(inMax - inMin))
 
 async def send_data(websocket):
-    x_read = 0
-    y_read = 0
-    button_0 = 0
-    button_1 = 0
-    switches = 0
-    x_normalised = 0
-    y_normalised = 0
-    BUTTON = 0
-    SWITCH = 0
-    
     accelerometer_data = process.stdout.readline()
     if accelerometer_data!=b'' and process.poll() is None:
         output = accelerometer_data.decode("utf-8").strip()
@@ -48,36 +37,32 @@ async def send_data(websocket):
             button_1 = int(output.split("\t")[3].split(":")[1].strip())
             switches = int(output.split("\t")[4].split(":")[1].strip(), 16)
                 
-        #===== Process Data =====#
-        x_normalised = map_to_range(x_read, -255, 255, 1, -1)
-        y_normalised = map_to_range(y_read, -255, 255, -1, 1)
+            #===== Process Data =====#
+            x_normalised = map_to_range(x_read, -255, 255, 1, -1)
+            y_normalised = map_to_range(y_read, -255, 255, -1, 1)
             
-        if button_0 == 1 and button_1 == 0:
-            BUTTON = -1
-        elif button_0 == 0 and button_1 == 1:
-            BUTTON = 1
-        else:
-            BUTTON = 0
+            if button_0 == 1 and button_1 == 0:
+                BUTTON = -1
+            elif button_0 == 0 and button_1 == 1:
+                BUTTON = 1
+            else:
+                BUTTON = 0
         
-        if switches == 1:
-            SWITCH = 1
-        elif switches == 512:
-            SWITCH = -1
-        else:
-            SWITCH = 0
+            if switches == 1:
+                SWITCH = 1
+            elif switches == 512:
+                SWITCH = -1
+            else:
+                SWITCH = 0
                 
-    #===== Package Data =====#
-    location_data={'Name': player_name, 'Thrust': SWITCH, 'Pitch': y_normalised, 'Roll': x_normalised, 'Yaw': BUTTON} # Data from accelerometer must be packaged into a dict
-    print("Sent data: ", location_data)
-    await websocket.send(json.dumps(location_data))
+            #===== Package Data =====#
+            location_data={'Name': player_name, 'Thrust': SWITCH, 'Pitch': y_normalised, 'Roll': x_normalised, 'Yaw': BUTTON} # Data from accelerometer must be packaged into a dict
+            await websocket.send(json.dumps(location_data))
 
 async def main():
     async with websockets.connect(f'ws://{server_ip}:12000', ping_timeout=99999) as websocket:
         await websocket.send(player_name)
-        start=time.time()
-        for i in range(100):
+        while True:
             await send_data(websocket)
             await asyncio.sleep(1/game_tick_rate)
-        end=time.time()
-        print(f"time was{(end-start)/100}")
 asyncio.run(main())

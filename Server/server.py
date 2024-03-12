@@ -6,9 +6,9 @@ import updatePositions as p
 # Dictionary to store clients
 clients = {}
 # How many times per second the game should update
-game_tick_rate=25
+game_tick_rate=240
 
-server_ip="127.0.0.1"
+server_ip="0.0.0.0"
 
 # Assign a name to a new connection
 async def new_connection(websocket):
@@ -82,10 +82,7 @@ def processing(TargetData, StoredData, DeltaSeconds):
 async def broadcast(message):
     try:
         for websocket in clients:
-            if clients[websocket]=="Player 1":
-                await websocket.send(message)
-            elif clients[websocket]=="Player 2":
-                await websocket.send(message)
+            await websocket.send(message)
     except:
         print(f"Could not broadcast to {clients[websocket]}. Please reconnect.")
         del clients[websocket]

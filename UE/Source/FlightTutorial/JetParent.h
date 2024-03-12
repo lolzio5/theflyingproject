@@ -69,6 +69,12 @@ public:
 	void updatePosture(UFlightTutorialGameInstance* GameInstance);
 	void NotifyServer();
 
+	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	float TimeAtTriggerBox1;
+	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	float TimeAtTriggerBox2;
+	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	float TimeAtTriggerBox3;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

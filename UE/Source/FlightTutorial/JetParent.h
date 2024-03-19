@@ -70,11 +70,14 @@ public:
 	void NotifyServer();
 
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	float TimeAtTriggerBox1;
+	float start_time = -1.0;
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	float TimeAtTriggerBox2;
+	float TimeAtTriggerBox1 = -1.0;
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	float TimeAtTriggerBox3;
+	float TimeAtTriggerBox2 = -1.0;
+	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	float TimeAtTriggerBox3 = -1.0;
+	
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

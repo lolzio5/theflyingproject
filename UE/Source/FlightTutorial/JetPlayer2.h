@@ -65,8 +65,19 @@ public:
 	void setRightAileronYawIn2(float data);
 	void setRudderYawIn2(float data);
 
+	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	float start_time = -1.0;
+	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	float TimeAtTriggerBox1 = -1.0;
+	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	float TimeAtTriggerBox2 = -1.0;
+	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	float TimeAtTriggerBox3 = -1.0;
+
 	UFUNCTION(BlueprintCallable)
 	void updatePosture(UFlightTutorialGameInstance* GameInstance);
+
+	UFUNCTION(BlueprintCallable)
 	void NotifyServer();
 
 protected:

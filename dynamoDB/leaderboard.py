@@ -14,7 +14,7 @@ def create_leaderboard_table(dynamodb=None):
         ],
         AttributeDefinitions=[
             {
-                'AttributeName': 'PlayedTime',
+                'AttributeName': 'StartTime',
                 'AttributeType': 'S'
             },
             {
@@ -42,7 +42,7 @@ def update_leaderboard(dynamodb, json_data):
     
     leaderboard_dict = json_data.load()
     if leaderboard_dict.get("leaderboard"):
-        player = leaderboard_table.get("player")
+        player = leaderboard_dict.get("player")
         is_leaderboard_message = 1
         
         if dynamodb:
@@ -54,7 +54,7 @@ def update_leaderboard(dynamodb, json_data):
                             },
                             UpdateExpression='SET PlayedTime=:val1',
                             ExpressionAttributeValues={
-                                ':val1': leaderboard_dict.get("PlayedTime")
+                                ':val1': leaderboard_dict.get("StartTime")
                             }
                         )
             for i in range(3):

@@ -31,12 +31,35 @@ void AJetPlayer2::Tick(float DeltaTime)
 
 void AJetPlayer2::NotifyServer()
 {
-	//UFlightTutorialGameInstance* GameInstance = Cast<UFlightTutorialGameInstance>(GetGameInstance());
+	UFlightTutorialGameInstance* GameInstance = Cast<UFlightTutorialGameInstance>(GetGameInstance());
+	FString message="";
+
+	if (start_time != -1.0)
+	{
+		message = "{\"leaderboard\": 1, \"player\" = \"player2\", \"StartTime\" = " + FString::SanitizeFloat(start_time) + "}";
+		
+	}
+	if (TimeAtTriggerBox1 != -1.0)
+	{
+		message = "{\"leaderboard\": 1, \"player\" = \"player2\", \"TimeAtTriggerBox1\" = " + FString::SanitizeFloat(TimeAtTriggerBox1) + "}";
+		
+	}
+	if (TimeAtTriggerBox2 != -1.0)
+	{
+		message = "{\"leaderboard\": 1, \"player\" = \"player2\", \"TimeAtTriggerBox2\" = " + FString::SanitizeFloat(TimeAtTriggerBox2) + "}";
+		
+	}
+	if (TimeAtTriggerBox3 != -1.0)
+	{
+		message = "{\"leaderboard\": 1, \"player\" = \"player2\", \"TimeAtTriggerBox3\" = " + FString::SanitizeFloat(TimeAtTriggerBox3) + "}";
+		
+	}
+
 	if (GameInstance)
 	{
 		if (GameInstance->WebSocket->IsConnected())
 		{
-			GameInstance->WebSocket->Send("get");
+			GameInstance->WebSocket->Send(message);
 		}
 	}
 }

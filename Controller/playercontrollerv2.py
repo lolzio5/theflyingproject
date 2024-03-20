@@ -57,7 +57,6 @@ async def send_data(websocket):
                 
             #===== Package Data =====#
             location_data={'Name': player_name, 'Thrust': SWITCH, 'Pitch': y_normalised, 'Roll': x_normalised, 'Yaw': BUTTON} # Data from accelerometer must be packaged into a dict
-            print("Sent data: ", location_data)
             await websocket.send(json.dumps(location_data))
 
 async def main():

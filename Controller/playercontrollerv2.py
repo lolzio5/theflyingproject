@@ -4,7 +4,7 @@ import json
 import subprocess
 
 player_name="Player 2"
-game_tick_rate=120 # How many times per second the game should update
+game_tick_rate=28 # How many times per second the game should update
 
 #Server IP Address
 # server_ip='18.130.215.50'
